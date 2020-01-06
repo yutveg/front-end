@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 function SignUp({ values, errors, touched, status }) {
 const [info, setInfo] = useState([]);
@@ -26,7 +27,7 @@ useEffect(() => {
         </div>
         <label className="checkbox-container">
             Accept Terms of Service?
-            <Field type="checkbox" name="tos" checked={values.termsofservice} />
+            <Field type="checkbox" name="termsofservice" checked={values.termsofservice} />
             <span className="checkmark" />
         </label>
         <button type="submit">Submit</button>
@@ -49,7 +50,7 @@ const FormikSignUp = withFormik({
             username: username || "",
             email: email || "",
             password: password || "",
-            termsofservice: termsofservice || true
+            termsofservice: termsofservice || false
         };
     },
 
@@ -66,15 +67,10 @@ const FormikSignUp = withFormik({
 
     handleSubmit(values, { setStatus }) {
     console.log("submitting", values);
-    axios
-    .post("https://regres.in/api/users/")
-    .then(response => {
-        console.log("success", response)
-        setStatus(response.data)
-    .catch(error => {
-        console.log("error", error)
-    })
-    })
+    axiosWithAuth()
+    .post('/signup', values)
+    .then(res => setStatus(res))
+    .catch(err => setStatus(err))
   }
 })(SignUp);
 

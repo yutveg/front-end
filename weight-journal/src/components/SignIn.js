@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 function SignIn({ values, errors, touched, status }) {
 const [info, setInfo] = useState([]);
@@ -9,6 +10,7 @@ useEffect(() => {
     console.log("status has changed", status);
     status && setInfo( information => [...information, status])
 },[status])
+
   return (
     <div className="form-container">
     <Form>
@@ -20,7 +22,7 @@ useEffect(() => {
             <Field type="password" name="password" placeholder="Password"/>
             {touched.password && errors.password && <p>{errors.password}</p>}
         </div>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
     </Form>
 
     {info.map(information => (
@@ -35,21 +37,16 @@ useEffect(() => {
 };
 
 const FormikSignIn = withFormik({
-    mapPropsToValues({ username, email, password, termsofservice }) {
+    mapPropsToValues({ username, password }) {
         return {
             username: username || "",
-            email: email || "",
-            password: password || "",
-            termsofservice: termsofservice || false,
+            password: password || ""
         };
     },
 
     validationSchema: Yup.object().shape({
         name: Yup.string()
         .required("Required Field"),
-        email: Yup.string()
-        .email("Email not valid")
-        .required("Email is required"),
         password: Yup.string()
         .min(6, "Password must be 6 characters or longer")
         .required("Password is required"),
@@ -57,15 +54,10 @@ const FormikSignIn = withFormik({
 
     handleSubmit(values, { setStatus }) {
     console.log("submitting", values);
-    axios
-    .post("https://regres.in/api/users/")
-    .then(response => {
-        console.log("success", response)
-        setStatus(response.data)
-    .catch(error => {
-        console.log("error", error)
-    })
-    })
+    axiosWithAuth()
+        .post('/signin', values)
+        .then(res => setStatus(res))
+        .catch(err => setStatus(err))
   }
 })(SignIn);
 
