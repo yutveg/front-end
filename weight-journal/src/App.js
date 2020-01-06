@@ -5,6 +5,7 @@ import Dashboard from "./components/Dashboard";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import {workoutdata} from "./workoutdata";
+import AddWorkout from './components/AddWorkout';
 
 function App() {
   const [workouts] = useState(workoutdata);
@@ -16,6 +17,7 @@ function App() {
           <Link to="/dashboard/">Dashboard</Link>
           <Link to="/signin/">Sign In</Link>
           <Link to="/signup/">Sign Up</Link>
+          <Link to="/addworkout/">Add Workout</Link>
         </div>
       </nav>
       <Switch>
@@ -27,6 +29,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <SignUp workouts={workouts}/>
+        </Route>
+        <Route path="/addworkout/">
+          <AddWorkout />
         </Route>
       </Switch>
     </div>
