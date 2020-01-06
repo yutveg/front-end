@@ -36,18 +36,11 @@ useEffect(() => {
 };
 
 const FormikSignIn = withFormik({
-<<<<<<< HEAD
-    mapPropsToValues({ username, password }) {
-        return {
-            username: username || "",
-            password: password || ""
-=======
     mapPropsToValues({ username, password, termsofservice }) {
         return {
             username: username || "",
             password: password || "",
             termsofservice: termsofservice || false,
->>>>>>> afc28e7933ddc9e83148bf8a8f4d40adfac9dc9e
         };
     },
 
