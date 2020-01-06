@@ -3,7 +3,7 @@ import {withFormik, Form, Field} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const SignIn = ({ values, errors, touched, status }) => {
+const SignUp = ({ values, errors, touched, status }) => {
     const [info, setInfo] = useState([]);
     useEffect(() => {
       console.log("status has changed");
@@ -43,7 +43,7 @@ const SignIn = ({ values, errors, touched, status }) => {
     );
   };
 
-const FormikSignIn = withFormik({
+const FormikSignUp = withFormik({
     mapPropsToValues({ username, email, password, terms }){
         return {
             username: username || "",
@@ -70,9 +70,9 @@ const FormikSignIn = withFormik({
           })
           .catch(error => console.log(error.response));
       }
-})(SignIn);
+})(SignUp);
 
-export default FormikSignIn
+export default FormikSignUp;
 
 
 
