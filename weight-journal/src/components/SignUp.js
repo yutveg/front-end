@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { withFormik, Form, Field } from "formik";
+import { Redirect } from 'react-router-dom'
 import * as Yup from "yup";
 import axios from "axios";
 import {axiosWithAuth} from '../utils/axiosWithAuth'
@@ -65,11 +66,16 @@ const FormikSignUp = withFormik({
         .required("Password is required"),
     }),
 
-    handleSubmit(values, { setStatus }) {
+    handleSubmit(values, { setStatus, setSubmitting, history }) {
     console.log("submitting", values);
     axiosWithAuth()
-    .post('/signup', values)
-    .then(res => setStatus(res))
+    .post('/auth/register', values)
+    .then(res => {
+        console.log(res)
+        localStorage.setItem('token', res.data.payload)
+        setSubmitting(false)
+        history.push('/dashboard')
+    })
     .catch(err => setStatus(err))
   }
 })(SignUp);

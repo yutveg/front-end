@@ -21,12 +21,8 @@ function App() {
       </nav>
       <Switch>
         <PrivateRoute path="/dashboard" component={Dashboard} />
-        <Route path="/signin/">
-          <SignIn workouts={workouts} />
-        </Route>
-        <Route path="/signup/">
-          <SignUp workouts={workouts} />
-        </Route>
+        <Route path="/signin/" render={props => <SignIn workouts={workouts}  />} />
+        <Route path="/signup/" render={props => <SignUp workouts={workouts}  />} />
       </Switch>
     </div>
   );

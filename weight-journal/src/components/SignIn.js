@@ -52,11 +52,15 @@ const FormikSignIn = withFormik({
         .required("Password is required"),
     }),
 
-    handleSubmit(values, { setStatus }) {
+    handleSubmit(values, { setStatus, history }) {
     console.log("submitting", values);
     axiosWithAuth()
-        .post('/signin', values)
-        .then(res => setStatus(res))
+        .post('/auth/login', values)
+        .then(res => {
+            console.log(res)
+            localStorage.setItem('token', res.data.payload)
+            history.push('/dashboard')
+        })
         .catch(err => setStatus(err))
   }
 })(SignIn);
