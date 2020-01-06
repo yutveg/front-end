@@ -11,7 +11,7 @@ function App() {
   const [workouts] = useState(workoutdata);
   return (
     <div className="App">
-      <nav>
+      <nav className="nav">
         <h1 className="header">Workout Journal</h1>
         <div className="nav-links">
           <Link to="/dashboard/">Dashboard</Link>

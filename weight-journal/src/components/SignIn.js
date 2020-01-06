@@ -13,11 +13,11 @@ useEffect(() => {
     <div className="form-container">
     <Form>
         <div>
-            <Field type="username" name="username" placeholder="Username"/>
+            <Field type="username" name="username" placeholder="Username" value={values.username}/>
             {touched.username && errors.username && <p>{errors.name}</p>}
         </div>
         <div>
-            <Field type="password" name="password" placeholder="Password"/>
+            <Field type="password" name="password" placeholder="Password" value={values.password}/>
             {touched.password && errors.password && <p>{errors.password}</p>}
         </div>
         <button>Submit</button>
@@ -26,7 +26,6 @@ useEffect(() => {
     {info.map(information => (
 	  <ul key={information.id}>
 	    <li>Username: {information.username}</li>
-	    <li>Email: {information.email}</li>
 	    <li>Password: {information.password}</li>
 	  </ul>
 	))}
@@ -35,10 +34,9 @@ useEffect(() => {
 };
 
 const FormikSignIn = withFormik({
-    mapPropsToValues({ username, email, password, termsofservice }) {
+    mapPropsToValues({ username, password, termsofservice }) {
         return {
             username: username || "",
-            email: email || "",
             password: password || "",
             termsofservice: termsofservice || false,
         };
@@ -47,9 +45,6 @@ const FormikSignIn = withFormik({
     validationSchema: Yup.object().shape({
         name: Yup.string()
         .required("Required Field"),
-        email: Yup.string()
-        .email("Email not valid")
-        .required("Email is required"),
         password: Yup.string()
         .min(6, "Password must be 6 characters or longer")
         .required("Password is required"),
@@ -70,3 +65,4 @@ const FormikSignIn = withFormik({
 })(SignIn);
 
 export default FormikSignIn;
+
