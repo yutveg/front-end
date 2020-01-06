@@ -15,11 +15,11 @@ useEffect(() => {
     <div className="form-container">
     <Form>
         <div>
-            <Field type="username" name="username" placeholder="Username"/>
+            <Field type="username" name="username" placeholder="Username" value={values.username}/>
             {touched.username && errors.username && <p>{errors.name}</p>}
         </div>
         <div>
-            <Field type="password" name="password" placeholder="Password"/>
+            <Field type="password" name="password" placeholder="Password" value={values.password}/>
             {touched.password && errors.password && <p>{errors.password}</p>}
         </div>
         <button type="submit">Submit</button>
@@ -28,7 +28,6 @@ useEffect(() => {
     {info.map(information => (
 	  <ul key={information.id}>
 	    <li>Username: {information.username}</li>
-	    <li>Email: {information.email}</li>
 	    <li>Password: {information.password}</li>
 	  </ul>
 	))}
@@ -37,10 +36,18 @@ useEffect(() => {
 };
 
 const FormikSignIn = withFormik({
+<<<<<<< HEAD
     mapPropsToValues({ username, password }) {
         return {
             username: username || "",
             password: password || ""
+=======
+    mapPropsToValues({ username, password, termsofservice }) {
+        return {
+            username: username || "",
+            password: password || "",
+            termsofservice: termsofservice || false,
+>>>>>>> afc28e7933ddc9e83148bf8a8f4d40adfac9dc9e
         };
     },
 
@@ -66,3 +73,4 @@ const FormikSignIn = withFormik({
 })(SignIn);
 
 export default FormikSignIn;
+
