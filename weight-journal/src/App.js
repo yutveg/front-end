@@ -9,8 +9,13 @@ import AddWorkout from './components/AddWorkout';
 import PrivateRoute from "./components/PrivateRoute";
 import UpdateWorkout from "./components/UpdateWorkout";
 
-function App(props) {
+function App({...props}) {
   const [workouts] = useState(workoutdata);
+
+  const signOut = props => {
+      localStorage.removeItem('token')
+      props.history.push('/signin/')
+  }
 
   return (
     <div className="App">
@@ -24,6 +29,7 @@ function App(props) {
           <Link to="/signin/">Sign In</Link>
           <Link to="/signup/">Sign Up</Link>
           <Link to="/addworkout/">Add Workout</Link>
+          <Link onClick={signOut}>Sign Out</Link>
         </div>
       </nav>
       <Switch>
