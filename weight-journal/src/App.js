@@ -1,6 +1,6 @@
 import React, { useState  } from "react";
 import "./App.css";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, useHistory } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
@@ -9,12 +9,15 @@ import AddWorkout from './components/AddWorkout';
 import PrivateRoute from "./components/PrivateRoute";
 import UpdateWorkout from "./components/UpdateWorkout";
 
-function App({...props}) {
+function App() {
   const [workouts] = useState(workoutdata);
+  let history = useHistory();
 
   const signOut = props => {
-      localStorage.removeItem('token')
-      props.history.push('/signin/')
+      setTimeout(() => {
+        localStorage.removeItem('token')
+        history.push('/signin/')
+      }, 300)
   }
 
   return (

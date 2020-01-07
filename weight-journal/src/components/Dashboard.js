@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
-import {workoutdata} from "../workoutdata"
+import { useHistory } from 'react-router-dom';
 
 function Dashboard(props) {
     const [workout, setWorkout] = useState([]);
+    const history = useHistory();
     
     useEffect(() => {
         axiosWithAuth()
