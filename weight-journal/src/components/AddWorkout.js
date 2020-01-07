@@ -18,8 +18,13 @@ const AddWorkout = () => {
 	};
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		// axiosWithAuth()
+        e.preventDefault();
+        // axiosWithAuth()
+        //     .post('link', workout)
+        //     .then(response => {
+        //         console.log(response)
+        //     })
+        //     .catch(error => console.log("Data not returned AddWorkout.js", error))
 
 		setWorkout({
 			...workout,
