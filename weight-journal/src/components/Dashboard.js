@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 
 function Dashboard(props) {
     const [workout, setWorkout] = useState([]);
-    const history = useHistory();
-    
+
+
     useEffect(() => {
         axiosWithAuth()
         .get(`users/${props.match.params.id}/journal`)
