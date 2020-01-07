@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp";
 import {workoutdata} from "./workoutdata";
 import AddWorkout from './components/AddWorkout';
 import PrivateRoute from "./components/PrivateRoute";
+import UpdateWorkout from "./components/UpdateWorkout";
 
 function App() {
   const [workouts] = useState(workoutdata);
@@ -28,6 +29,7 @@ function App() {
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route path="/signin/" render={props => <SignIn workouts={workouts}  />} />
         <Route path="/signup/" render={props => <SignUp workouts={workouts}  />} />
+        <Route path="/updateworkout/:id" render={props => <UpdateWorkout {...props} workouts={workouts} />} />
       </Switch>
     </div>
   );

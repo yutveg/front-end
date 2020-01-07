@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 import './AddWorkout.css';
+import UpdateWorkout from './UpdateWorkout';
 
 const AddWorkout = () => {
 	const [ workout, setWorkout ] = useState({
