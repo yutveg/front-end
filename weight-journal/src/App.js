@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp";
 import {workoutdata} from "./workoutdata";
 import AddWorkout from './components/AddWorkout';
 import PrivateRoute from "./components/PrivateRoute";
+import UpdateWorkout from "./components/UpdateWorkout";
 
 function App(props) {
   const [workouts] = useState(workoutdata);
@@ -14,7 +15,10 @@ function App(props) {
   return (
     <div className="App">
       <nav className="nav">
-        <h1 className="header">Workout Journal</h1>
+        <div className="header-container">
+          <img className="header-icon" src="https://image.flaticon.com/icons/svg/2246/2246607.svg" alt="header-image"/>
+          <h1 className="header">Workout Journal</h1>
+        </div>
         <div className="nav-links">
           <Link to="/dashboard/">Dashboard</Link>
           <Link to="/signin/">Sign In</Link>
@@ -29,6 +33,7 @@ function App(props) {
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route path="/signin/" render={props => <SignIn workouts={workouts} {...props} />} />
         <Route path="/signup/" render={props => <SignUp workouts={workouts} {...props} />} />
+        <Route path="/updateworkout/:id" render={props => <UpdateWorkout {...props} workouts={workouts} />} />
       </Switch>
     </div>
   );

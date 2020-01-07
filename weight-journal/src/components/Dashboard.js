@@ -17,10 +17,6 @@ function Dashboard(props) {
     }
     return(
         <div>
-            <img className="dashboard-image"
-            src='https://images.unsplash.com/photo-1526401485004-46910ecc8e51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
-            alt="dashboard-img" />    
-            <h1>Your Journal</h1>
             {workout.map((workouts => (
                 // <Workout workouts={workouts} />
                 <div className="workout-container" key={workouts.id}>
