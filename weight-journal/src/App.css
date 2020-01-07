@@ -4,6 +4,14 @@
   font-size: 1rem;
 }
 
+body {
+  height: 100vh;
+  background-image: linear-gradient(rgba(43, 42, 42, 0.5), rgba(43, 42, 42, 0.5)), url("https://images.unsplash.com/photo-1542766788-a2f588f447ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 nav {
   font-size: 1.2rem;
   display: flex;
@@ -11,9 +19,8 @@ nav {
   align-items: center;
   padding: 0 1%;
   margin-bottom: 2%;
-  border-bottom: 1px solid darkgray;
+  border-bottom: 1px solid black;
   background-color: #F2F3F4
-  /* background-color: #FFFAF1; */
 }
 
 .nav-links {
@@ -29,7 +36,22 @@ nav {
 }
 
 .nav-links a:hover {
-  text-shadow: 0 0 3px grey;
+  text-shadow: 0 0 3px gray;
+}
+
+.header-container{
+  display: flex;
+  font-family: 'Pacifico', cursive;
+}
+
+.header-icon{
+  width: 100%;
+  max-width: 4%;
+  margin: 1%;
+}
+
+.header{
+  font-size: 2rem;
 }
 
 .workout-card{
@@ -53,8 +75,8 @@ img{
 .form-container {
   border: 1px solid black;
   width: 100%;
-  max-width: 40%;
-  margin: 5% 0 0 30%;
+  max-width: 30%;
+  margin: 2% 0 0 35%;
   background-color: #F2F3F4;
 } 
 
@@ -69,6 +91,7 @@ label {
   font-size: 1.5rem;
 }
 
+
 .checkbox-container{
   display: flex;
   flex-direction: row-reverse;
@@ -76,6 +99,15 @@ label {
 }
 
 button{
+  font-size: 1rem;
+  border-radius: 20%;
+  padding: 2%;
   margin: 5% 5%;
-
+  width: 20%;
+  /* background-color: #EBF5FB; */
+  background-color: #D6EAF8;
+  /* background-color: #008CBA; */
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.12), 0 2px 3px 2px rgba(0, 0, 0, 0.24);
 }
+
+

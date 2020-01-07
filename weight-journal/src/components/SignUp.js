@@ -14,15 +14,15 @@ const SignUp = ({ values, errors, touched, status }) => {
         <h1>Sign Up</h1>
         <Form>
             <label className="forms">
-                <Field id="name" type="text" name="name" placeholder="Username:"/> 
+                <Field id="name" type="text" name="username" placeholder="Username"/> 
                 {touched.username && errors.username && (<p className="errors">{errors.username}</p>)}
             </label>
             <label className="forms">
-                <Field id="email" type="text" name="email" placeholder="Email:"/>
+                <Field id="email" type="email" name="email" placeholder="Email"/>
                 {touched.email && errors.email && (<p className email="errors">{errors.email}</p>)}
             </label>
             <label className="forms">
-                <Field id="password" type="text" name="password" placeholder="Password:"/>
+                <Field id="password" type="password" name="password" placeholder="Password"/>
                 {touched.password && errors.password && (<p className password="errors">{errors.password}</p>)}
       
             </label>
@@ -37,14 +37,13 @@ const SignUp = ({ values, errors, touched, status }) => {
             </label> */}
             <button>Submit</button>
         </Form>
-        {info.map(information => (
+        {/* {info.map(information => (
           <div key={information.id}>
-            <p>Name: {information.username}</p>
-            <p>Email: {information.email}</p>
-            <p>Password: {information.password}</p>
-            <p>Accepted Terms</p>
+            <p>Username {information.username}</p>
+            <p>Email {information.email}</p>
+            <p>Password {information.password}</p>
           </div>
-        ))}
+        ))} */}
       </div>
     );
   };

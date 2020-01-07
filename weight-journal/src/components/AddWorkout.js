@@ -37,8 +37,8 @@ const AddWorkout = () => {
 
 	return (
 		<div>
-			<h1>AddWorkout.js</h1>
 			<form className="addworkout-container" onSubmit={handleSubmit}>
+			<h1>Your Exercises:</h1>
 				<input
 					className="workout-input"
 					placeholder="Workout Name"
