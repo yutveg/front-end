@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Route, Link, Switch } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
@@ -8,15 +8,21 @@ import {workoutdata} from "./workoutdata";
 import AddWorkout from './components/AddWorkout';
 import PrivateRoute from "./components/PrivateRoute";
 
-function App() {
+function App(props) {
   const [workouts] = useState(workoutdata);
+  const [loginStatus, setLoginStatus] = useState(false)
+  useEffect(() => {
+    if (loginStatus === true){
+      props.history.push('/dashboard')
+    }
+  }, [loginStatus])
   return (
     <div className="App">
       <nav className="nav">
         <h1 className="header">Workout Journal</h1>
         <div className="nav-links">
           <Link to="/dashboard/">Dashboard</Link>
-          <Link to="/signin/">Sign In</Link>
+          <Link to="/signin/" setLoginStatus={setLoginStatus}>Sign In</Link>
           <Link to="/signup/">Sign Up</Link>
           <Link to="/addworkout/">Add Workout</Link>
         </div>

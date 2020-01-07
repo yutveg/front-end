@@ -1,14 +1,17 @@
 import React, {useState, useEffect} from "react";
 import { withFormik, Form, Field } from "formik";
+import {useHistory} from 'react-router-dom';
 import * as Yup from "yup";
-import {axiosWithAuth} from '../utils/axiosWithAuth'
+import {axiosWithAuth} from '../utils/axiosWithAuth';
 
-function SignIn({ errors, touched, status }) {
+function SignIn({ errors, touched, status, props }) {
 const [info, setInfo] = useState([]);
 useEffect(() => {
     console.log("status has changed", status);
     status && setInfo( information => [...information, status])
 },[status])
+
+  
 
   return (
     <div className="form-container">
@@ -52,14 +55,14 @@ const FormikSignIn = withFormik({
         .required("Password is required"),
     }),
 
-    handleSubmit(values, { setStatus, history }) {
+    handleSubmit(values, setLoggedIn, { setStatus }) {
     console.log("submitting", values);
     axiosWithAuth()
         .post('/auth/login', values)
         .then(res => {
             console.log(res)
             localStorage.setItem('token', res.data.payload)
-            history.push('/dashboard')
+            setLoggedIn(true)
         })
         .catch(err => setStatus(err))
   }

@@ -1,13 +1,20 @@
 import React, {useState, useEffect} from "react";
-// import axios from "axios";
+import {axiosWithAuth} from "../utils/axiosWithAuth";
 import {workoutdata} from "../workoutdata"
 
-function Dashboard() {
+function Dashboard(props) {
     const [workout, setWorkout] = useState([]);
     useEffect(() => {
         setWorkout(workoutdata)
-    //     axios.get("").then(response => (console.log("success", response))).catch(error =>(console.log("error", error)))
+        axiosWithAuth()
+        .get(`users/${props.match.params.id}/journal`)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     },[]) 
+    const handleDelete = e => {
+        console.log(e.target.id)
+        axiosWithAuth().delete()
+    }
     return(
         <div>
             <img className="dashboard-image"
@@ -22,6 +29,7 @@ function Dashboard() {
                         <div className="workout-items">
                             <p>Weight: {workouts.weight}</p>
                             <p>Reps: {workouts.reps}</p>
+                            <button id={workouts.id} onClick={handleDelete}>X</button>
                         </div>
                     </div>
                 </div>
