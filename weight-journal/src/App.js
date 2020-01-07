@@ -1,6 +1,6 @@
 import React, { useState  } from "react";
 import "./App.css";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, useHistory } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
@@ -9,8 +9,16 @@ import AddWorkout from './components/AddWorkout';
 import PrivateRoute from "./components/PrivateRoute";
 import UpdateWorkout from "./components/UpdateWorkout";
 
-function App(props) {
+function App() {
   const [workouts] = useState(workoutdata);
+  let history = useHistory();
+
+  const signOut = props => {
+      setTimeout(() => {
+        localStorage.removeItem('token')
+        history.push('/signin/')
+      }, 300)
+  }
 
   return (
     <div className="App">
@@ -24,6 +32,7 @@ function App(props) {
           <Link to="/signin/">Sign In</Link>
           <Link to="/signup/">Sign Up</Link>
           <Link to="/addworkout/">Add Workout</Link>
+          <Link onClick={signOut}>Sign Out</Link>
         </div>
       </nav>
       <Switch>
