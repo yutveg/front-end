@@ -4,8 +4,8 @@ import {workoutdata} from "../workoutdata"
 
 function Dashboard(props) {
     const [workout, setWorkout] = useState([]);
+    
     useEffect(() => {
-        
         axiosWithAuth()
         .get(`users/${props.match.params.id}/journal`)
         .then(res => {
@@ -14,11 +14,19 @@ function Dashboard(props) {
         })
         .catch(err => console.log(err))
     },[]) 
+
     const handleDelete = e => {
         console.log(e.target.id)
         axiosWithAuth()
         .delete(`/users/${e.target.id}/entry`)
         .then(res => console.log(res))
+        .catch(err => console.log(err))
+        axiosWithAuth()
+        .get(`users/${props.match.params.id}/journal`)
+        .then(res => {
+            console.log(res.data)
+            setWorkout(res.data)
+        })
         .catch(err => console.log(err))
     }
     return(
