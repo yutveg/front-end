@@ -15,6 +15,11 @@ function Dashboard(props) {
         console.log(e.target.id)
         axiosWithAuth().delete()
     }
+
+    const handleEdit = e => {
+        e.preventDefault()
+        props.history.push(`/updateworkout/${e.target.id}`)
+    }
     return(
         <div>
             {workout.map((workouts => (
@@ -26,6 +31,7 @@ function Dashboard(props) {
                             <p>Weight: {workouts.weight}</p>
                             <p>Reps: {workouts.reps}</p>
                             <button id={workouts.id} onClick={handleDelete}>X</button>
+                            <button id={workouts.id} onClick={handleEdit}>Edit</button>
                         </div>
                     </div>
                 </div>

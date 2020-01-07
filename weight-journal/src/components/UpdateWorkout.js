@@ -53,7 +53,7 @@ const UpdateWorkout = (props) => {
     return (
         <div>
             <h1>UpdateWorkout.js</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input 
                     placeholder='workout' 
                     type='text' 

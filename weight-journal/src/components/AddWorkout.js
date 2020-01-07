@@ -65,7 +65,7 @@ const AddWorkout = () => {
 				/>
 				<button className="add-button">Add Workout</button>
 			</form>
-			<UpdateWorkout />
+			
 		</div>
 	);
 };
