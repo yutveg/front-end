@@ -3,32 +3,36 @@ import {withFormik, Form, Field} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const SignIn = ({ values, errors, touched, status }) => {
+const SignUp = ({ values, errors, touched, status }) => {
     const [info, setInfo] = useState([]);
     useEffect(() => {
       console.log("status has changed");
       status && setInfo(info => [...info, status]);
     }, [status]);
     return (
-      <div className="new-form">
+      <div className="form-container">
+        <h1>Sign Up</h1>
         <Form>
-            <div>
+            <label className="forms">
                 <Field id="name" type="text" name="name" placeholder="Name:"/> 
                 {touched.name && errors.name && (<p className="errors">{errors.name}</p>)}
-            </div>
-            <div>
+            </label>
+            <label className="forms">
                 <Field id="email" type="text" name="email" placeholder="Email:"/>
                 {touched.email && errors.email && (<p className email="errors">{errors.email}</p>)}
-            </div>
-            <div>
+            </label>
+            <label className="forms">
                 <Field id="password" type="text" name="password" placeholder="Password:"/>
                 {touched.password && errors.password && (<p className password="errors">{errors.password}</p>)}
-            </div>
-          
-            <label className="checkbox-container" htmlFor="terms">
-                <Field id="terms" type="checkbox" name="terms" check={values.terms}/>
-                {touched.terms && errors.terms && (<p className terms="errors">{errors.terms}</p>)}
             </label>
+          
+            {/* <label className="checkbox-container" htmlFor="terms">Accept Terms of Service?
+            <Field id="terms" type="checkbox" name="terms" check={values.terms} />
+            <span className="checkmark" />
+            {touched.terms && errors.terms && (
+            <p className terms="errors">{errors.terms}</p>
+            )}
+            </label> */}
             <button>Submit</button>
         </Form>
         {info.map(information => (
@@ -43,7 +47,7 @@ const SignIn = ({ values, errors, touched, status }) => {
     );
   };
 
-const FormikSignIn = withFormik({
+const FormikSignUp = withFormik({
     mapPropsToValues({ name, email, password, terms }){
         return {
             name: name || "",
@@ -54,7 +58,7 @@ const FormikSignIn = withFormik({
     },
 
     validationSchema: Yup.object().shape({
-        name: Yup.string().required("Required Field"),
+        username: Yup.string().required("Required Field"),
         email: Yup.string().required("Required Field"),
         password: Yup.string().required("Required Field"),
         terms: Yup.boolean().oneOf([true], "Must Accept Terms")
@@ -70,9 +74,9 @@ const FormikSignIn = withFormik({
           })
           .catch(error => console.log(error.response));
       }
-})(SignIn);
+})(SignUp);
 
-export default FormikSignIn
+export default FormikSignUp
 
 
 

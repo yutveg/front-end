@@ -11,15 +11,16 @@ useEffect(() => {
 },[status])
   return (
     <div className="form-container">
+    <h1>Sign In</h1> 
     <Form>
-        <div>
+        <label className="forms">
             <Field type="username" name="username" placeholder="Username" value={values.username}/>
             {touched.username && errors.username && <p>{errors.name}</p>}
-        </div>
-        <div>
+        </label>
+        <label className="forms">
             <Field type="password" name="password" placeholder="Password" value={values.password}/>
             {touched.password && errors.password && <p>{errors.password}</p>}
-        </div>
+        </label>
         <button>Submit</button>
     </Form>
 
@@ -43,7 +44,7 @@ const FormikSignIn = withFormik({
     },
 
     validationSchema: Yup.object().shape({
-        name: Yup.string()
+        username: Yup.string()
         .required("Required Field"),
         password: Yup.string()
         .min(6, "Password must be 6 characters or longer")
