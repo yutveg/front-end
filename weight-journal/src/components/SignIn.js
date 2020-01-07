@@ -14,23 +14,23 @@ useEffect(() => {
     <div className="form-container">
     <h1>Sign In</h1> 
     <Form>
-        <div>
+        <label className="forms">
             <Field type="username" name="username" placeholder="Username" />
             {touched.username && errors.username && <p>{errors.username}</p>}
-        </div>
-        <div>
+        </label>
+        <label className="forms">
             <Field type="password" name="password" placeholder="Password" />
             {touched.password && errors.password && <p>{errors.password}</p>}
-        </div>
+        </label>
         <button type="submit">Submit</button>
     </Form>
 
-    {info.map(information => (
-	  <ul key={information.id}>
-	    <li>Username: {information.username}</li>
-	    <li>Password: {information.password}</li>
-	  </ul>
-	))}
+            {/* {info.map(information => (
+            <ul key={information.id}>
+                <li>Username: {information.username}</li>
+                <li>Password: {information.password}</li>
+            </ul>
+            ))} */}
     </div>
     );
 };
