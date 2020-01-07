@@ -3,37 +3,43 @@ import {withFormik, Form, Field} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const SignIn = ({ values, errors, touched, status }) => {
+const SignUp = ({ values, errors, touched, status }) => {
     const [info, setInfo] = useState([]);
     useEffect(() => {
       console.log("status has changed");
       status && setInfo(info => [...info, status]);
     }, [status]);
     return (
-      <div className="new-form">
+      <div className="form-container">
+        <h1>Sign Up</h1>
         <Form>
-            <div>
-                <Field id="name" type="text" name="name" placeholder="Name:"/> 
-                {touched.name && errors.name && (<p className="errors">{errors.name}</p>)}
-            </div>
-            <div>
+            <label className="forms">
+                <Field id="name" type="text" name="name" placeholder="Username:"/> 
+                {touched.username && errors.username && (<p className="errors">{errors.username}</p>)}
+            </label>
+            <label className="forms">
                 <Field id="email" type="text" name="email" placeholder="Email:"/>
                 {touched.email && errors.email && (<p className email="errors">{errors.email}</p>)}
-            </div>
-            <div>
+            </label>
+            <label className="forms">
                 <Field id="password" type="text" name="password" placeholder="Password:"/>
                 {touched.password && errors.password && (<p className password="errors">{errors.password}</p>)}
-            </div>
-          
-            <label className="checkbox-container" htmlFor="terms">
-                <Field id="terms" type="checkbox" name="terms" check={values.terms}/>
-                {touched.terms && errors.terms && (<p className terms="errors">{errors.terms}</p>)}
+      
             </label>
+          
+            {/* <label className="checkbox-container" htmlFor="terms">Accept Terms of Service?
+            <Field id="terms" type="checkbox" name="terms" check={values.terms} />
+            <span className="checkmark" />
+            {touched.terms && errors.terms && (
+            <p className terms="errors">{errors.terms}</p>
+            )}
+
+            </label> */}
             <button>Submit</button>
         </Form>
         {info.map(information => (
           <div key={information.id}>
-            <p>Name: {information.name}</p>
+            <p>Name: {information.username}</p>
             <p>Email: {information.email}</p>
             <p>Password: {information.password}</p>
             <p>Accepted Terms</p>
@@ -43,26 +49,26 @@ const SignIn = ({ values, errors, touched, status }) => {
     );
   };
 
-const FormikSignIn = withFormik({
-    mapPropsToValues({ name, email, password, terms }){
+const FormikSignUp = withFormik({
+    mapPropsToValues({ username, email, password, terms }){
         return {
-            name: name || "",
+            username: username || "",
             email: email || "",
             password: password || "",
-            terms: terms || false
+            // terms: terms || false
         };
     },
 
     validationSchema: Yup.object().shape({
-        name: Yup.string().required("Required Field"),
+        username: Yup.string().required("Required Field"),
         email: Yup.string().required("Required Field"),
         password: Yup.string().required("Required Field"),
-        terms: Yup.boolean().oneOf([true], "Must Accept Terms")
+        // terms: Yup.boolean().oneOf([true], "Must Accept Terms")
       }),
       handleSubmit(values, { setStatus, resetForm }) {
         console.log("submitting", values);
         axios
-          .post("https://reqres.in/api/users", values)
+          .post("https://weightliftingjournal1.herokuapp.com/api/auth/register", values)
           .then(response => {
             console.log("success", response);
             setStatus(response.data);
@@ -70,9 +76,10 @@ const FormikSignIn = withFormik({
           })
           .catch(error => console.log(error.response));
       }
-})(SignIn);
+})(SignUp);
 
-export default FormikSignIn
+export default FormikSignUp;
+
 
 
 

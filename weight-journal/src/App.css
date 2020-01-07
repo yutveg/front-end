@@ -49,3 +49,33 @@ img{
   max-width: 35%;
   margin-bottom: 2%;
 }
+
+.form-container {
+  border: 1px solid black;
+  width: 100%;
+  max-width: 40%;
+  margin: 5% 0 0 30%;
+  background-color: #F2F3F4;
+} 
+
+.form-container, .forms{
+  display:flex;
+  flex-direction: column;
+}
+
+label {
+  width: 65%;
+  margin: 3% 0 0 20%;
+  font-size: 1.5rem;
+}
+
+.checkbox-container{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-left: 10%;
+}
+
+button{
+  margin: 5% 5%;
+
+}

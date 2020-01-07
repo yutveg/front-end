@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
-import './App.css';
-import { Route, Link, Switch } from 'react-router-dom'
+import React, { useState } from "react";
+import "./App.css";
+import { Route, Link, Switch } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import {workoutdata} from "./workoutdata";
 import AddWorkout from './components/AddWorkout';
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const [workouts] = useState(workoutdata);
@@ -21,18 +22,12 @@ function App() {
         </div>
       </nav>
       <Switch>
-        <Route path="/dashboard">
-          <Dashboard workouts={workouts}/>
-        </Route>
-        <Route path="/signin">
-          <SignIn workouts={workouts}/>
-        </Route>
-        <Route path="/signup">
-          <SignUp workouts={workouts}/>
-        </Route>
         <Route path="/addworkout/">
           <AddWorkout />
         </Route>
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <Route path="/signin/" render={props => <SignIn workouts={workouts}  />} />
+        <Route path="/signup/" render={props => <SignUp workouts={workouts}  />} />
       </Switch>
     </div>
   );
