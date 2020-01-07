@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 import './AddWorkout.css';
+import UpdateWorkout from './UpdateWorkout';
 
 const AddWorkout = () => {
 	const [ workout, setWorkout ] = useState({
@@ -18,8 +19,13 @@ const AddWorkout = () => {
 	};
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		// axiosWithAuth()
+        e.preventDefault();
+        // axiosWithAuth()
+        //     .post('link', workout)
+        //     .then(response => {
+        //         console.log(response)
+        //     })
+        //     .catch(error => console.log("Data not returned AddWorkout.js", error))
 
 		setWorkout({
 			...workout,
