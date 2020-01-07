@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState  } from "react";
 import "./App.css";
 import { Route, Link, Switch } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
@@ -11,12 +11,7 @@ import UpdateWorkout from "./components/UpdateWorkout";
 
 function App(props) {
   const [workouts] = useState(workoutdata);
-  const [loginStatus, setLoginStatus] = useState(false)
-  useEffect(() => {
-    if (loginStatus === true){
-      props.history.push('/dashboard')
-    }
-  }, [loginStatus])
+
   return (
     <div className="App">
       <nav className="nav">
@@ -26,7 +21,7 @@ function App(props) {
         </div>
         <div className="nav-links">
           <Link to="/dashboard/">Dashboard</Link>
-          <Link to="/signin/" setLoginStatus={setLoginStatus}>Sign In</Link>
+          <Link to="/signin/">Sign In</Link>
           <Link to="/signup/">Sign Up</Link>
           <Link to="/addworkout/">Add Workout</Link>
         </div>
@@ -36,8 +31,8 @@ function App(props) {
           <AddWorkout />
         </Route>
         <PrivateRoute path="/dashboard" component={Dashboard} />
-        <Route path="/signin/" render={props => <SignIn workouts={workouts}  />} />
-        <Route path="/signup/" render={props => <SignUp workouts={workouts}  />} />
+        <Route path="/signin/" render={props => <SignIn workouts={workouts} {...props} />} />
+        <Route path="/signup/" render={props => <SignUp workouts={workouts} {...props} />} />
         <Route path="/updateworkout/:id" render={props => <UpdateWorkout {...props} workouts={workouts} />} />
       </Switch>
     </div>
