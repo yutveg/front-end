@@ -4,7 +4,7 @@ import axios from 'axios'
 import './UpdateWorkout.css'
 
 const initialWorkout = {
-    workout: '',
+    name: '',
     body_region: '',
     sets: '',
     weight: '',
@@ -16,8 +16,23 @@ const UpdateWorkout = (props) => {
     const [ workout, setWorkout ] = useState(initialWorkout)
     console.log(workout)
 
+    useEffect(() => {
+        const workoutToEdit = props.workouts.find(
+            e => `${e.id}` === props.match.params.id
+        )
+        console.log(props.workouts, workoutToEdit)
+        if(workoutToEdit) {
+            setWorkout(workoutToEdit)
+        }
+    }, [props.workouts, props.match.params.id])
+
     const handleChanges = e => {
+        e.persist()
         let value = e.target.value
+        if (e.target.name === 'sets') {
+            value = parseInt(value, 10)
+        }
+
         setWorkout({
             ...workout,
             [e.target.name]: value
@@ -26,24 +41,24 @@ const UpdateWorkout = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-            axios('')
-            console.log(workout)
+        axios
             .put(`link`, workout)
             .then(response => {
-                
+                props.updateWorkout(response.data);
+                props.history.push(`link`)
             })
-            .catch(error => console.log('data not returned. UpdateWorkout.js'))
+            .catch(error => console.log('Data not returned(handleSubmit) UpdateWorkout.js', error))
     }
 
     return (
         <div>
             <h1>UpdateWorkout.js</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input 
                     placeholder='workout' 
                     type='text' 
                     name='workout' 
-                    value={workout.workout}
+                    value={workout.name}
                     onChange={handleChanges}
                 />
                 <input 
@@ -62,7 +77,7 @@ const UpdateWorkout = (props) => {
                 />
                 <input 
                     placeholder='weight' 
-                    type='number' 
+                    type='text' 
                     name='weight' 
                     value={workout.weight}
                     onChange={handleChanges}
