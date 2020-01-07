@@ -1,27 +1,28 @@
 import React, {useState, useEffect} from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
-function SignIn({ values, errors, touched, status }) {
+function SignIn({ errors, touched, status }) {
 const [info, setInfo] = useState([]);
 useEffect(() => {
     console.log("status has changed", status);
     status && setInfo( information => [...information, status])
 },[status])
+
   return (
     <div className="form-container">
     <h1>Sign In</h1> 
     <Form>
-        <label className="forms">
-            <Field type="username" name="username" placeholder="Username" value={values.username}/>
-            {touched.username && errors.username && <p>{errors.name}</p>}
-        </label>
-        <label className="forms">
-            <Field type="password" name="password" placeholder="Password" value={values.password}/>
+        <div>
+            <Field type="username" name="username" placeholder="Username" />
+            {touched.username && errors.username && <p>{errors.username}</p>}
+        </div>
+        <div>
+            <Field type="password" name="password" placeholder="Password" />
             {touched.password && errors.password && <p>{errors.password}</p>}
-        </label>
-        <button>Submit</button>
+        </div>
+        <button type="submit">Submit</button>
     </Form>
 
     {info.map(information => (
@@ -51,17 +52,16 @@ const FormikSignIn = withFormik({
         .required("Password is required"),
     }),
 
-    handleSubmit(values, { setStatus }) {
+    handleSubmit(values, { setStatus, history }) {
     console.log("submitting", values);
-    axios
-    .post("https://regres.in/api/users/")
-    .then(response => {
-        console.log("success", response)
-        setStatus(response.data)
-    .catch(error => {
-        console.log("error", error)
-    })
-    })
+    axiosWithAuth()
+        .post('/auth/login', values)
+        .then(res => {
+            console.log(res)
+            localStorage.setItem('token', res.data.payload)
+            history.push('/dashboard')
+        })
+        .catch(err => setStatus(err))
   }
 })(SignIn);
 
