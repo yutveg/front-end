@@ -10,24 +10,30 @@ const SignUp = ({ values, errors, touched, status }) => {
       status && setInfo(info => [...info, status]);
     }, [status]);
     return (
-      <div className="new-form">
+      <div className="form-container">
+        <h1>Sign Up</h1>
         <Form>
-            <div>
-                <Field id="username" type="text" name="username" placeholder="Username:"/> 
+            <label className="forms">
+                <Field id="name" type="text" name="name" placeholder="Username:"/> 
                 {touched.username && errors.username && (<p className="errors">{errors.username}</p>)}
-            </div>
-            <div>
+            </label>
+            <label className="forms">
                 <Field id="email" type="text" name="email" placeholder="Email:"/>
                 {touched.email && errors.email && (<p className email="errors">{errors.email}</p>)}
-            </div>
-            <div>
+            </label>
+            <label className="forms">
                 <Field id="password" type="text" name="password" placeholder="Password:"/>
                 {touched.password && errors.password && (<p className password="errors">{errors.password}</p>)}
-            </div>
+      
+            </label>
           
-            {/* <label className="checkbox-container" htmlFor="terms">
-                <Field id="terms" type="checkbox" name="terms" check={values.terms}/>
-                {touched.terms && errors.terms && (<p className terms="errors">{errors.terms}</p>)}
+            {/* <label className="checkbox-container" htmlFor="terms">Accept Terms of Service?
+            <Field id="terms" type="checkbox" name="terms" check={values.terms} />
+            <span className="checkmark" />
+            {touched.terms && errors.terms && (
+            <p className terms="errors">{errors.terms}</p>
+            )}
+
             </label> */}
             <button>Submit</button>
         </Form>
@@ -73,6 +79,7 @@ const FormikSignUp = withFormik({
 })(SignUp);
 
 export default FormikSignUp;
+
 
 
 
