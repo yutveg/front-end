@@ -34,9 +34,10 @@ function Dashboard(props) {
           <div className="workout-card">
             <div className="workout-items">
               <p><span>Exercise: </span>{exercise.workout}</p>
-              <p><span>Target Muscles: </span> {exercise.body_region}</p>
+              <p><span>Target Muscles: </span>{exercise.body_region}</p>
               <p><span>Weight: </span>{exercise.weight}</p>
               <p><span>Reps: </span>{exercise.reps}</p>
+              <p><span>Notes: </span>{exercise.notes}</p>
             </div>
             <div className="button-container">
               <button className="workout-button" id={exercise.id} onClick={handleDelete}>
