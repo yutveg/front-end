@@ -1,10 +1,11 @@
-import React, { useState  } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Route, Link, Switch, useHistory } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import {workoutdata} from "./workoutdata";
+import {axiosWithAuth} from './utils/axiosWithAuth'
 import AddWorkout from './components/AddWorkout';
 import AddUserData from './components/AddUserData';
 import PrivateRoute from "./components/PrivateRoute";
@@ -12,10 +13,9 @@ import UpdateWorkout from "./components/UpdateWorkout";
 
 function App() {
   const [userid, setUserid] = useState('')
-
   let history = useHistory();
 
-  const signOut = props => {
+  const signOut = () => {
       setTimeout(() => {
         localStorage.removeItem('token')
         history.push('/signin/')
@@ -40,11 +40,10 @@ function App() {
         <Route path="/addworkout/">
           <AddWorkout />
         </Route>
-        <PrivateRoute path="/dashboard" component={() => <Dashboard userid={userid} />} />
+        <PrivateRoute path="/dashboard" component={props => <Dashboard userid={userid} {...props} />} />
         <Route path="/addinfo/:id" render={props => <AddUserData {...props} />} />
         <Route path="/signin/" render={props => <SignIn {...props} setUserid={setUserid} />} />
         <Route path="/signup/" render={props => <SignUp {...props} />} />
-        <Route path="/updateworkout/:id" render={props => <UpdateWorkout {...props} />} />
       </Switch>
     </div>
   );
