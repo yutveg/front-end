@@ -42,10 +42,10 @@ const UpdateWorkout = (props) => {
     const handleSubmit = e => {
         e.preventDefault()
         axios
-            .put(`link`, workout)
+            .put(`/users/${workout.id}/entry`, workout)
             .then(response => {
                 props.updateWorkout(response.data);
-                props.history.push(`link`)
+                props.history.push(`/dashboard`)
             })
             .catch(error => console.log('Data not returned(handleSubmit) UpdateWorkout.js', error))
     }
