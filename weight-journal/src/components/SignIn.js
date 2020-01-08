@@ -38,7 +38,7 @@ const [info, setInfo] = useState({
             <label className="forms">
                 <input id="password" type="password" name="password" placeholder="Password:" onChange={handleChanges} required/> 
             </label>
-            <button type="submit">Submit</button>
+            <button className="submit-button" type="submit">Submit</button>
         </form>
     </div>
     );

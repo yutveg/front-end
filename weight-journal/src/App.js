@@ -25,9 +25,8 @@ function App() {
   return (
     <div className="App">
       <nav className="nav">
-        <div className="header-container">
-          <img className="header-icon" src="https://image.flaticon.com/icons/svg/2246/2246607.svg" alt="header-image"/>
-          <h1 className="header">Workout Journal</h1>
+        <div className="header">
+          <span class="fas fa-dumbbell"></span>
         </div>
         <div className="nav-links">
           <Link to="/signin/">Sign In</Link>

@@ -13,13 +13,12 @@
 }
   
 .add-button {
-    width: 100px;
+    width: 100%;
     align-self: center;
     /* background-color: #008CBA; */
-    background-color: #D6EAF8;
+    background-color: #ff6347;
     border: none;
-    /* color: white; */
-    color: black;
+    color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;

@@ -10,7 +10,7 @@ function Dashboard(props) {
       .get(`/users/${props.userid}/journal`)
       .then(res => {
         console.log(res.data);
-        
+        setWorkout(res.data);
       })
       .catch(err => console.log(err));
   }, []);
@@ -41,16 +41,18 @@ function Dashboard(props) {
         // <Workout workouts={workouts} />
         <div className="workout-container" key={workouts.id}>
           <div className="workout-card">
-            <h2>Exercise: {workouts.workout}</h2>
             <div className="workout-items">
-              <p>Target Muscles: {workouts.body_region}</p>
-              <p>Weight: {workouts.weight}</p>
-              <p>Reps: {workouts.reps}</p>
-              <button id={workouts.id} onClick={handleDelete}>
-                X
-              </button>
-              <button id={workouts.id} onClick={handleEdit}>
+              <p><span>Exercise:  {workouts.workout}</span></p>
+              <p><span>Target Muscles: </span> {workouts.body_region}</p>
+              <p><span>Weight: </span>{workouts.weight}</p>
+              <p><span>Reps: </span>{workouts.reps}</p>
+            </div>
+            <div className="button-container">
+              <button className="workout-button" id={workouts.id} onClick={handleDelete}>
                 Edit
+              </button>
+              <button className="workout-button" id={workouts.id} onClick={handleEdit}>
+                Delete
               </button>
             </div>
           </div>
