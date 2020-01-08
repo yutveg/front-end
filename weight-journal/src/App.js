@@ -6,11 +6,13 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import {workoutdata} from "./workoutdata";
 import AddWorkout from './components/AddWorkout';
+import AddUserData from './components/AddUserData';
 import PrivateRoute from "./components/PrivateRoute";
 import UpdateWorkout from "./components/UpdateWorkout";
 
 function App() {
-  const [workouts] = useState(workoutdata);
+  const [userid, setUserid] = useState('')
+
   let history = useHistory();
 
   const signOut = props => {
@@ -28,7 +30,6 @@ function App() {
           <h1 className="header">Workout Journal</h1>
         </div>
         <div className="nav-links">
-          <Link to="/dashboard/">Dashboard</Link>
           <Link to="/signin/">Sign In</Link>
           <Link to="/signup/">Sign Up</Link>
           <Link to="/addworkout/">Add Workout</Link>
@@ -39,10 +40,11 @@ function App() {
         <Route path="/addworkout/">
           <AddWorkout />
         </Route>
-        <PrivateRoute path="/dashboard" component={Dashboard} />
-        <Route path="/signin/" render={props => <SignIn workouts={workouts} {...props} />} />
-        <Route path="/signup/" render={props => <SignUp workouts={workouts} {...props} />} />
-        <Route path="/updateworkout/:id" render={props => <UpdateWorkout {...props} workouts={workouts} />} />
+        <PrivateRoute path="/dashboard" component={() => <Dashboard userid={userid} />} />
+        <Route path="/addinfo/:id" render={props => <AddUserData {...props} />} />
+        <Route path="/signin/" render={props => <SignIn {...props} setUserid={setUserid} />} />
+        <Route path="/signup/" render={props => <SignUp {...props} />} />
+        <Route path="/updateworkout/:id" render={props => <UpdateWorkout {...props} />} />
       </Switch>
     </div>
   );
