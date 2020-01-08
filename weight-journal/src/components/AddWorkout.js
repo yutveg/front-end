@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-// import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import './AddWorkout.css';
-import UpdateWorkout from './UpdateWorkout';
 
-const AddWorkout = () => {
+const AddWorkout = (props) => {
 	const [ workout, setWorkout ] = useState({
 		name: '',
-		weight: '',
-		reps: ''
+    	body_region: '',
+    	sets: '',
+    	weight: '',
+    	reps: '',
+    	notes: ''
 	});
 
 	const handleChanges = (e) => {
@@ -20,18 +22,22 @@ const AddWorkout = () => {
 
 	const handleSubmit = (e) => {
         e.preventDefault();
-        // axiosWithAuth()
-        //     .post('link', workout)
-        //     .then(response => {
-        //         console.log(response)
-        //     })
-        //     .catch(error => console.log("Data not returned AddWorkout.js", error))
+        axiosWithAuth()
+            .post('/users/:id/journal', workout)
+            .then(response => {
+				console.log(response)
+				props.history.push('/');
+            })
+            .catch(error => console.log("Data not returned AddWorkout.js", error))
 
 		setWorkout({
 			...workout,
 			name: '',
-			weight: '',
-			reps: ''
+    		body_region: '',
+    		sets: '',
+    		weight: '',
+    		reps: '',
+    		notes: ''
 		});
 	};
 
@@ -45,6 +51,22 @@ const AddWorkout = () => {
 					name="name"
 					type="text"
 					value={workout.name}
+					onChange={handleChanges}
+				/>
+				<input
+					className="workout-input"
+					placeholder="Body Region"
+					name="body_region"
+					type="text"
+					value={workout.body_region}
+					onChange={handleChanges}
+				/>
+				<input
+					className="workout-input"
+					placeholder="Sets"
+					name="sets"
+					type="text"
+					value={workout.sets}
 					onChange={handleChanges}
 				/>
 				<input
@@ -63,9 +85,16 @@ const AddWorkout = () => {
 					value={workout.reps}
 					onChange={handleChanges}
 				/>
+				<input
+					className="workout-input"
+					placeholder="Notes"
+					name="notes"
+					type="text"
+					value={workout.notes}
+					onChange={handleChanges}
+				/>
 				<button className="add-button">Add Workout</button>
 			</form>
-			
 		</div>
 	);
 };
