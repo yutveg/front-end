@@ -47,7 +47,7 @@ function App() {
           {localStorage.getItem('token') && <Link to="/signin/" onClick={signOut}>Sign Out</Link>}
         </div>
       </nav>
-        <Route path="/addworkout/" component={AddWorkout} userid={userid} />
+        <Route path="/addworkout/" component={() => <AddWorkout userid={userid} />} />
         <PrivateRoute path="/dashboard" component={props => <Dashboard userid={userid} setWorkouts={setWorkouts} workouts={workouts} {...props} />} />
         <Route path="/addinfo/:id" render={props => <AddUserData {...props} />} />
         <Route path="/signin/" render={props => <SignIn {...props} setUserid={setUserid} />} />
