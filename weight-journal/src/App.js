@@ -22,9 +22,10 @@ function App() {
       .then(res => {
         console.log(res.data);
         setWorkouts(res.data); 
+        console.log(workouts)
       })
       .catch(err => console.log(err));
-    } else return
+    } else console.log('im being derpy')
   }, [userid]);
 
   const signOut = () => {
@@ -45,14 +46,12 @@ function App() {
           <Link to="/signin/" onClick={signOut}>Sign Out</Link>
         </div>
       </nav>
-      <Switch>
         <Route path="/addworkout/" component={AddWorkout} userid={userid} />
         <PrivateRoute path="/dashboard" component={props => <Dashboard userid={userid} setWorkouts={setWorkouts} workouts={workouts} {...props} />} />
         <Route path="/addinfo/:id" render={props => <AddUserData {...props} />} />
         <Route path="/signin/" render={props => <SignIn {...props} setUserid={setUserid} />} />
         <Route path="/signup/" render={props => <SignUp {...props} />} />
         {/* <Route path="/updateworkout/:id" render={props => <UpdateWorkout {...props} /> } /> */}
-      </Switch>
     </div>
   );
 }

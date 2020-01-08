@@ -31,7 +31,7 @@ function Dashboard(props) {
   return (
     <div>
       <Link to={`/userinfo/${props.userid}`}>Add User Info</Link>
-      {workouts.map(exercise => (
+      {props.workouts.map(exercise => (
         // <Workout workouts={workouts} />
         <div className="workout-container" key={exercise.id}>
           <div className="workout-card">
