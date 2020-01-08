@@ -32,7 +32,6 @@ const UpdateWorkout = (props) => {
         if (e.target.name === 'sets') {
             value = parseInt(value, 10)
         }
-
         setWorkout({
             ...workout,
             [e.target.name]: value
