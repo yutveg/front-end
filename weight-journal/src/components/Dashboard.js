@@ -6,9 +6,6 @@ import UpdateWorkout from './UpdateWorkout'
 function Dashboard(props) {
   const [workouts, setWorkouts] = useState([]);
 
-  
-
-
   const handleDelete = e => {
     console.log(e.target.id);
     axiosWithAuth()
@@ -35,15 +32,17 @@ function Dashboard(props) {
         // <Workout workouts={workouts} />
         <div className="workout-container" key={exercise.id}>
           <div className="workout-card">
-            <h2>Exercise: {exercise.workout}</h2>
             <div className="workout-items">
-              <p>Target Muscles: {exercise.body_region}</p>
-              <p>Weight: {exercise.weight}</p>
-              <p>Reps: {exercise.reps}</p>
-              <button id={exercise.id} onClick={handleDelete}>
-                X
+              <p><span>Exercise: </span>{exercise.workout}</p>
+              <p><span>Target Muscles: </span> {exercise.body_region}</p>
+              <p><span>Weight: </span>{exercise.weight}</p>
+              <p><span>Reps: </span>{exercise.reps}</p>
+            </div>
+            <div className="button-container">
+              <button className="workout-button" id={exercise.id} onClick={handleDelete}>
+                Delete
               </button>
-              <button id={exercise.id} onClick={handleEdit}>
+              <button className="workout-button" id={exercise.id} onClick={handleEdit}>
                 Edit
               </button>
             </div>

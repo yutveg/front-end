@@ -1,12 +1,12 @@
 .App {
   text-align: center;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Oswald', sans-serif;
   font-size: 1rem;
 }
 
 body {
   height: 100vh;
-  background-image: linear-gradient(rgba(43, 42, 42, 0.5), rgba(43, 42, 42, 0.5)), url("https://images.unsplash.com/photo-1542766788-a2f588f447ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1655&q=80");
+  background-image: linear-gradient(rgba(43, 42, 42, 0.5), rgba(43, 42, 42, 0.5)), url("https://images.unsplash.com/photo-1517964603305-11c0f6f66012?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2551&q=80");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -39,22 +39,14 @@ nav {
   text-shadow: 0 0 3px gray;
 }
 
-.header-container{
-  display: flex;
-  font-family: 'Pacifico', cursive;
-}
-
-.header-icon{
-  width: 100%;
-  max-width: 4%;
-  margin: 1%;
-}
-
 .header{
-  font-size: 2rem;
+  display: flex;
+  font-size: 4rem;
+  padding: 1%;
 }
 
-.workout-card{
+/* .workout-card{
+  display: flex;
   border: 1px solid black;
   width: 25%;
   margin-left: 38%;
@@ -64,12 +56,54 @@ nav {
 
 .workout-items{
   font-size: 1.2rem;
+} */
+
+.workout-container {
+  background-color: #f2f3f4;
+  border: 1px solid black;
+  width: 100%;
 }
 
-img{
-  width:100%;
-  max-width: 35%;
-  margin-bottom: 2%;
+/* .workout-container h2 {
+  text-align: center;
+}
+
+.workout-container h4 {
+  font-weight: normal;
+  margin-left: 1%;
+  margin-bottom: 0;
+} */
+
+.workout-card {
+  background-color: lightgrey;
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+  height: 5vh;
+  /* margin-bottom: 1%; */
+}
+
+.workout-items {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 50%;
+}
+
+.workout-button {
+  font-weight: bold;
+  color: #ff6347;
+  border: none;
+  background: none;
+  margin: 2%;
+}
+
+.button-container {
+  display: flex;
+}
+
+p span {
+  font-weight: bold;
 }
 
 .form-container {
@@ -87,7 +121,7 @@ img{
 
 label {
   width: 65%;
-  margin: 3% 0 0 20%;
+  margin: 3% 0 0 18%;
   font-size: 1.5rem;
 }
 
@@ -99,15 +133,17 @@ label {
 }
 
 button{
+  color: white;
+  font-weight: bold;
+  background-color: #ff6347;
   font-size: 1rem;
-  border-radius: 20%;
   padding: 2%;
-  margin: 5% 5%;
-  width: 20%;
+  margin: 5%;
+  width: 65%;
   /* background-color: #EBF5FB; */
-  background-color: #D6EAF8;
+  /* background-color: #D6EAF8; */
   /* background-color: #008CBA; */
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.12), 0 2px 3px 2px rgba(0, 0, 0, 0.24);
+  /* box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.12), 0 2px 3px 2px rgba(0, 0, 0, 0.24); */
 }
 
 
