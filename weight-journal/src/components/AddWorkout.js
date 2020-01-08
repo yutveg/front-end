@@ -4,7 +4,7 @@ import './AddWorkout.css';
 
 const AddWorkout = (props) => {
 	const [ workout, setWorkout ] = useState({
-		name: '',
+		username: '',
     	body_region: '',
     	sets: '',
     	weight: '',
@@ -22,18 +22,17 @@ const AddWorkout = (props) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(workout)
         axiosWithAuth()
             .post(`/users/${props.userid}/journal`, workout)
             .then(response => {
 				console.log(response)
-				props.history.push('/');
+				props.history.push('/dashboard');
             })
             .catch(error => console.log("Data not returned AddWorkout.js", error))
 
 		setWorkout({
 			...workout,
-			name: '',
+			username: '',
     		body_region: '',
     		sets: '',
     		weight: '',
@@ -49,7 +48,7 @@ const AddWorkout = (props) => {
 				<input
 					className="workout-input"
 					placeholder="Workout Name"
-					name="name"
+					name="username"
 					type="text"
 					value={workout.name}
 					onChange={handleChanges}

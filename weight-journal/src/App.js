@@ -30,6 +30,7 @@ function App() {
 
   const signOut = () => {
         localStorage.removeItem('token')
+        setUserid(0)
   }
 
   return (
@@ -40,10 +41,11 @@ function App() {
           <h1 className="header">Workout Journal</h1>
         </div>
         <div className="nav-links">
-          <Link to="/signin/">Sign In</Link>
-          <Link to="/signup/">Sign Up</Link>
-          <Link to="/addworkout/">Add Workout</Link>
-          <Link to="/signin/" onClick={signOut}>Sign Out</Link>
+          {!localStorage.getItem('token') && <Link to="/signin/">Sign In</Link> }
+          {!localStorage.getItem('token') && <Link to="/signup/">Sign Up</Link>} 
+          {localStorage.getItem('token') && <Link to="/dashboard">Dashboard</Link>}
+          {localStorage.getItem('token') && <Link to="/addworkout/">Add Workout</Link>}
+          {localStorage.getItem('token') && <Link to="/signin/" onClick={signOut}>Sign Out</Link>}
         </div>
       </nav>
         <Route path="/addworkout/" component={AddWorkout} userid={userid} />
@@ -51,7 +53,7 @@ function App() {
         <Route path="/addinfo/:id" render={props => <AddUserData {...props} />} />
         <Route path="/signin/" render={props => <SignIn {...props} setUserid={setUserid} />} />
         <Route path="/signup/" render={props => <SignUp {...props} />} />
-        {/* <Route path="/updateworkout/:id" render={props => <UpdateWorkout {...props} /> } /> */}
+        <Route path="/updateworkout/:id" render={props => <UpdateWorkout workouts={workouts} {...props} /> } />
     </div>
   );
 }
