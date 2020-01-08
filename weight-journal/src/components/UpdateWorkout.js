@@ -4,7 +4,7 @@ import axios from 'axios'
 import './UpdateWorkout.css'
 
 const initialWorkout = {
-    name: '',
+    workout: '',
     body_region: '',
     sets: '',
     weight: '',
@@ -57,7 +57,7 @@ const UpdateWorkout = (props) => {
                     placeholder='workout' 
                     type='text' 
                     name='workout' 
-                    value={workout.name}
+                    value={workout.workout}
                     onChange={handleChanges}
                 />
                 <input 

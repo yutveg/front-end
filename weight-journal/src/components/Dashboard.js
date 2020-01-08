@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Route } from "react-router-dom";
+import UpdateWorkout from './UpdateWorkout'
 
 function Dashboard(props) {
-  const [workout, setWorkout] = useState([]);
+  const [workouts, setWorkouts] = useState([]);
 
-  useEffect(() => {
-    axiosWithAuth()
-      .get(`/users/${props.userid}/journal`)
-      .then(res => {
-        console.log(res.data);
-        
-      })
-      .catch(err => console.log(err));
-  }, []);
+  
+
 
   const handleDelete = e => {
     console.log(e.target.id);
@@ -25,7 +19,7 @@ function Dashboard(props) {
       .get(`users/${props.userid}/journal`)
       .then(res => {
         console.log(res.data);
-        setWorkout(res.data);
+        props.setWorkout(res.data);
       })
       .catch(err => console.log(err));
   };
@@ -37,19 +31,19 @@ function Dashboard(props) {
   return (
     <div>
       <Link to={`/userinfo/${props.userid}`}>Add User Info</Link>
-      {workout.map(workouts => (
+      {props.workouts.map(exercise => (
         // <Workout workouts={workouts} />
-        <div className="workout-container" key={workouts.id}>
+        <div className="workout-container" key={exercise.id}>
           <div className="workout-card">
-            <h2>Exercise: {workouts.workout}</h2>
+            <h2>Exercise: {exercise.workout}</h2>
             <div className="workout-items">
-              <p>Target Muscles: {workouts.body_region}</p>
-              <p>Weight: {workouts.weight}</p>
-              <p>Reps: {workouts.reps}</p>
-              <button id={workouts.id} onClick={handleDelete}>
+              <p>Target Muscles: {exercise.body_region}</p>
+              <p>Weight: {exercise.weight}</p>
+              <p>Reps: {exercise.reps}</p>
+              <button id={exercise.id} onClick={handleDelete}>
                 X
               </button>
-              <button id={workouts.id} onClick={handleEdit}>
+              <button id={exercise.id} onClick={handleEdit}>
                 Edit
               </button>
             </div>
