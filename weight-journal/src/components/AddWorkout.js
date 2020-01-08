@@ -21,9 +21,10 @@ const AddWorkout = (props) => {
 	};
 
 	const handleSubmit = (e) => {
-        e.preventDefault();
+		e.preventDefault();
+		console.log(workout)
         axiosWithAuth()
-            .post('/users/:id/journal', workout)
+            .post(`/users/${props.userid}/journal`, workout)
             .then(response => {
 				console.log(response)
 				props.history.push('/');
@@ -65,7 +66,7 @@ const AddWorkout = (props) => {
 					className="workout-input"
 					placeholder="Sets"
 					name="sets"
-					type="text"
+					type="number"
 					value={workout.sets}
 					onChange={handleChanges}
 				/>
@@ -73,7 +74,7 @@ const AddWorkout = (props) => {
 					className="workout-input"
 					placeholder="Weight"
 					name="weight"
-					type="number"
+					type="text"
 					value={workout.weight}
 					onChange={handleChanges}
 				/>

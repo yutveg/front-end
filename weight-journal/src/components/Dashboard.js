@@ -6,15 +6,7 @@ import UpdateWorkout from './UpdateWorkout'
 function Dashboard(props) {
   const [workouts, setWorkouts] = useState([]);
 
-  useEffect(() => {
-    axiosWithAuth()
-      .get(`/users/${props.userid}/journal`)
-      .then(res => {
-        console.log(res.data);
-        setWorkouts(res.data); 
-      })
-      .catch(err => console.log(err));
-  }, [props.workouts]);
+  
 
 
   const handleDelete = e => {
@@ -38,7 +30,6 @@ function Dashboard(props) {
   };
   return (
     <div>
-      <Route path="/updateworkout/:id" render={props => <UpdateWorkout workout={workouts} updateWorkout={setWorkouts} {...props} /> } />
       <Link to={`/userinfo/${props.userid}`}>Add User Info</Link>
       {workouts.map(exercise => (
         // <Workout workouts={workouts} />
