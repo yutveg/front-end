@@ -52,7 +52,7 @@ function App() {
         <Route path="/addinfo/:id" render={props => <AddUserData {...props} />} />
         <Route path="/signin/" render={props => <SignIn {...props} setUserid={setUserid} />} />
         <Route path="/signup/" render={props => <SignUp {...props} />} />
-        <Route path="/updateworkout/:id" render={props => <UpdateWorkout workouts={workouts} {...props} /> } />
+        <Route path="/updateworkout/:id" render={props => <UpdateWorkout workouts={workouts} {...props} /> } /> 
     </div>
   );
 }

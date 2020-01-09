@@ -38,7 +38,7 @@ const SignUp = props => {
                 <input id="email" type="text" name="email" placeholder="Email:" onChange={handleChanges} required/>
             </label>
             <label className="forms">
-                <input id="password" type="text" name="password" placeholder="Password:" onChange={handleChanges} required/> 
+                <input id="password" type="password" name="password" placeholder="Password:" onChange={handleChanges} required/> 
             </label>
             <button className="submit-button" type="submit">Submit</button>
         </form>

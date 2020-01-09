@@ -50,12 +50,8 @@ function Dashboard(props) {
               <p>Notes: {workouts.notes}</p>
             </div>
             <div className="button-container">
-              <button className="workout-button" id={workouts.id} onClick={handleEdit}>
-                Edit
-              </button>
-              <button className="workout-button" id={workouts.id} onClick={handleDelete}>
-                Delete
-              </button>
+              <button class="far fa-edit" id={workouts.id} onClick={handleEdit}/>
+              <button class="fas fa-trash-alt" id={workouts.id} onClick={handleDelete}/>
             </div>
           </div>
         </div>
