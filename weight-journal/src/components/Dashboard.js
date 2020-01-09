@@ -9,8 +9,8 @@ function Dashboard(props) {
     axiosWithAuth()
       .get(`/users/${props.userid}/info`)
       .then(res => {
-        setUserData(res.data)
         console.log("this is the users data", res.data)
+        setUserData(res.data)
       })
       .catch(err => console.log(err))
   }, []);
@@ -37,8 +37,15 @@ function Dashboard(props) {
   };
   return (
     <div>
-
-      <Link to={`/addinfo`}>Add User Info</Link>
+      <Link to={`/addinfo`}>Add Body Weight Entry</Link>
+      <h1>Body Weight Entries</h1>
+      {userData.map(entry => (
+        <div key={entry.id}>
+          <h1>{entry.user_weight}</h1>
+          <h2>Date goes here</h2>
+        </div>
+      ))}
+      <h1>Exercise Entries</h1>
       {props.workouts.map(exercise => (
         // <Workout workouts={workouts} />
         <div className="workout-container" key={exercise.id}>
@@ -50,6 +57,7 @@ function Dashboard(props) {
               <p><span>Reps: </span>{exercise.reps}</p>
               <p><span>Sets: </span>{exercise.sets}</p>
               <p><span>Notes: </span>{exercise.notes}</p>
+              <p>{exercise.created_at.slice(0, 10)}</p>
             </div>
             <div className="button-container">
               <button className="far fa-edit" id={exercise.id} onClick={handleEdit}/>
