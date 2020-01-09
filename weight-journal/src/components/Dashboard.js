@@ -3,8 +3,6 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 
 function Dashboard(props) {
-
-
   const handleDelete = e => {
     console.log(e.target.id);
     axiosWithAuth()
@@ -35,8 +33,11 @@ function Dashboard(props) {
 
   return (
     <div>
-      <Link to={`/addinfo`}>Add Body Weight Entry</Link>
-      <h1>Body Weight Entries</h1>
+      <div className="adduser-container">
+        <Link to={`/addinfo`}>Add Body Weight Entry</Link>
+      </div>
+      <div className="body-weight-entry">
+        <h1>Body Weight Entries</h1>
       {props.userData.map(entry => (
         <div key={entry.id}>
           <h1>{entry.created_at.slice(0, 10)}</h1>
@@ -44,7 +45,10 @@ function Dashboard(props) {
           <label name="userdata" id={entry.id} onClick={handleEdit}>Edit</label>
         </div>
       ))}
-      <h1>Exercise Entries</h1>
+      </div>
+      <div className="exercise-entry">
+        <h1>Exercise Entries</h1>
+      </div>
       {props.workouts.map(exercise => (
         // <Workout workouts={workouts} />
         <div className="workout-container" key={exercise.id}>
