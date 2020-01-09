@@ -30,6 +30,7 @@ function App() {
   const signOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userid");
+    setUserid(0)
   };
 
   return (
