@@ -3,14 +3,15 @@ import {axiosWithAuth} from "../utils/axiosWithAuth";
 
 const AddUserData = props => {
   const [userInfo, setUserInfo] = useState({
-    age: "",
-    height: "",
-    weight: ""
+    user_age: "",
+    user_height: "",
+    user_weight: ""
   });
 
   const handleChange = e => {
+    e.persist()
     let value = e.target.value
-    if(e.target.name === 'age'){
+    if(e.target.name === 'user_age'){
       value = parseInt(value, 10)
     }
 
@@ -23,6 +24,7 @@ const AddUserData = props => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(userInfo)
+    console.log(props.userid)
     axiosWithAuth()
       .post(`/users/${props.userid}/info`, userInfo)
       .then(res => console.log(res))
@@ -37,6 +39,7 @@ const AddUserData = props => {
         <label>Age:</label>
         <input
           type="number"
+          name="user_age"
           placeholder="Age.."
           onChange={handleChange}
           required
@@ -44,6 +47,7 @@ const AddUserData = props => {
         <label>Height:</label>
         <input
           type="text"
+          name="user_height"
           placeholder="Height.."
           onChange={handleChange}
           required
@@ -51,6 +55,7 @@ const AddUserData = props => {
         <label>Weight:</label>
         <input
           type="text"
+          name="user_weight"
           placeholder="Weight.."
           onChange={handleChange}
           required
