@@ -16,12 +16,12 @@ function App() {
 
 
   useEffect(() => {
+    setUserid(localStorage.getItem('userid'))
     axiosWithAuth()
       .get(`/users/${userid}/journal`)
       .then(res => {
-          console.log(res.data)
+          console.log("workout data", res.data)
           setWorkouts(res.data) 
-          console.log(userid)
       })
       .catch(err => console.log(err));
   }, [userid]);
@@ -29,7 +29,6 @@ function App() {
   const signOut = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('userid')
-        setUserid(0)
   }
 
   return (

@@ -66,6 +66,7 @@ const AddWorkout = (props) => {
 					type="text"
 					value={workout.workout}
 					onChange={handleChanges}
+					required
 				/>
 				<input
 					className="workout-input"
@@ -74,6 +75,7 @@ const AddWorkout = (props) => {
 					type="text"
 					value={workout.body_region}
 					onChange={handleChanges}
+					required
 				/>
 				<input
 					className="workout-input"
@@ -82,6 +84,7 @@ const AddWorkout = (props) => {
 					type="number"
 					value={workout.sets}
 					onChange={handleChanges}
+					required
 				/>
 				<input
 					className="workout-input"
@@ -90,6 +93,7 @@ const AddWorkout = (props) => {
 					type="number"
 					value={workout.weight}
 					onChange={handleChanges}
+					required
 				/>
 				<input
 					className="workout-input"
@@ -98,6 +102,7 @@ const AddWorkout = (props) => {
 					type="number"
 					value={workout.reps}
 					onChange={handleChanges}
+					required
 				/>
 				<input
 					className="workout-input"
@@ -106,6 +111,7 @@ const AddWorkout = (props) => {
 					type="text"
 					value={workout.notes}
 					onChange={handleChanges}
+					required
 				/>
 				<button className="add-button">Submit</button>
 			</form>
