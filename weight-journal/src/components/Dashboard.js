@@ -1,20 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 
 function Dashboard(props) {
-  const [userData, setUserData] = useState([]);
-
-  useEffect(() => {
-    axiosWithAuth()
-      .get(`/users/${props.userid}/info`)
-      .then(res => {
-        console.log("this is the users data", res.data)
-        setUserData(res.data)
-      })
-      .catch(err => console.log(err))
-  }, []);
-
   const handleDelete = e => {
     console.log(e.target.id);
     axiosWithAuth()
@@ -33,8 +21,16 @@ function Dashboard(props) {
 
   const handleEdit = e => {
     e.preventDefault();
-    props.history.push(`/updateworkout/${e.target.id}`);
+    console.log(e.target.id)
+    if(e.target.getAttribute('name') === "userdata"){
+      props.history.push(`/updateuserinfo/${e.target.id}`);
+    }
+    else if(e.target.getAttribute('name') === "exercisedata"){
+      props.history.push(`/updateworkout/${e.target.id}`);
+    }
+    else return
   };
+
   return (
     <div>
       <div className="adduser-container">
@@ -42,10 +38,11 @@ function Dashboard(props) {
       </div>
       <div className="body-weight-entry">
         <h1>Body Weight Entries</h1>
-      {userData.map(entry => (
+      {props.userData.map(entry => (
         <div key={entry.id}>
           <h1>{entry.created_at.slice(0, 10)}</h1>
           <h2>{entry.user_weight}</h2>
+          <label name="userdata" id={entry.id} onClick={handleEdit}>Edit</label>
         </div>
       ))}
       </div>
@@ -66,7 +63,7 @@ function Dashboard(props) {
               <p>{exercise.created_at.slice(0, 10)}</p>
             </div>
             <div className="button-container">
-              <button className="far fa-edit" id={exercise.id} onClick={handleEdit}/>
+              <button name="exercisedata" className="far fa-edit" id={exercise.id} onClick={handleEdit}/>
               <button className="fas fa-trash-alt" id={exercise.id} onClick={handleDelete}/>
             </div>
           </div>
