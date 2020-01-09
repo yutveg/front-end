@@ -9,21 +9,31 @@ import AddWorkout from "./components/AddWorkout";
 import AddUserData from "./components/AddUserData";
 import PrivateRoute from "./components/PrivateRoute";
 import UpdateWorkout from "./components/UpdateWorkout";
+import UpdateUserData from "./components/UpdateUserData";
 
 function App() {
-  const [userid, setUserid] = useState("");
+  const [userid, setUserid] = useState(0);
   const [workouts, setWorkouts] = useState([]);
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
+    console.log(userid)
+    setUserid(localStorage.getItem("userid"));
     if(localStorage.getItem('token')){
-      setUserid(localStorage.getItem("userid"));
-    axiosWithAuth()
-      .get(`/users/${userid}/journal`)
-      .then(res => {
-        console.log("workout data", res.data);
-        setWorkouts(res.data);
+      axiosWithAuth()
+        .get(`/users/${userid}/journal`)
+        .then(res => {
+          console.log("workout data", res.data);
+          setWorkouts(res.data);
       })
-      .catch(err => console.log(err));
+        .catch(err => console.log(err));
+      axiosWithAuth()
+        .get(`/users/${userid}/info`)
+        .then(res => {
+          console.log("this is the users data", res.data)
+          setUserData(res.data)
+        })
+        .catch(err => console.log(err))
     }
   }, [userid]);
 
@@ -32,7 +42,8 @@ function App() {
     localStorage.removeItem("userid");
     setUserid(0)
   };
-
+  if (!userData) return null
+  else if(userData){
   return (
     <div className="App">
       <nav className="nav">
@@ -55,6 +66,7 @@ function App() {
           )}
         </div>
       </nav>
+      <Route exact path="/" render={props => <SignIn {...props} setUserid={setUserid} />} />
       <Route
         path="/addworkout/"
         component={props => (
@@ -74,6 +86,8 @@ function App() {
             setUserid={setUserid}
             setWorkouts={setWorkouts}
             workouts={workouts}
+            userData={userData}
+            setUserData={setUserData}
             {...props}
           />
         )}
@@ -92,15 +106,15 @@ function App() {
         render={props => (
           <UpdateWorkout
             workouts={workouts}
-            updateWorkout={setWorkouts}
             userid={userid}
             setUserid={setUserid}
             {...props}
           />
         )}
       />
+      <Route path="/updateuserinfo/:id" render={props => <UpdateUserData {...props} userData={userData} userid={userid} setUserid={setUserid} />} />
     </div>
-  );
+  )}
 }
 
 export default App;

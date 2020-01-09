@@ -40,7 +40,7 @@ const UpdateWorkout = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(workout)
+        console.log("this is what we are sending to the workout put", workout)
         console.log(workout.id)
         let tempID = props.userid
         axiosWithAuth()
@@ -49,9 +49,7 @@ const UpdateWorkout = (props) => {
                 console.log("this is the response", response.data)
                 props.setUserid(0)
                 props.setUserid(tempID)
-                props.history.push(`/dashboard`)
-               
-                
+                props.history.push(`/dashboard`)  
             })
             .catch(error => console.log('Data not returned(handleSubmit) UpdateWorkout.js', error))
     }
