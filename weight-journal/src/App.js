@@ -22,6 +22,7 @@ function App() {
       
       .get(`/users/${userid}/journal`)
       .then(res => {
+        console.log(res.data)
         setWorkouts(res.data); 
         console.log(userid)
       })

@@ -47,8 +47,9 @@ const UpdateWorkout = (props) => {
             .then(response => {
                 console.log("this is the response", response.data)
                 props.updateWorkout(response.data);
-                props.setUserid(props.userid)
                 props.history.push(`/dashboard`)
+                props.setUserid(props.userid)
+                
             })
             .catch(error => console.log('Data not returned(handleSubmit) UpdateWorkout.js', error))
     }
