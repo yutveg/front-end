@@ -30,30 +30,35 @@ const AddUserData = props => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Age:</label>
-      <input
-        type="number"
-        placeholder="Age.."
-        onChange={handleChange}
-        required
-      />
-      <label>Height:</label>
-      <input
-        type="text"
-        placeholder="Height.."
-        onChange={handleChange}
-        required
-      />
-      <label>Weight:</label>
-      <input
-        type="text"
-        placeholder="Weight.."
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <div className="user-container">
+      <h1>Update Your Info</h1>
+      <div className="user-form-container">  
+      <form className="user-form" onSubmit={handleSubmit}>
+        <label>Age:</label>
+        <input
+          type="number"
+          placeholder="Age.."
+          onChange={handleChange}
+          required
+        />
+        <label>Height:</label>
+        <input
+          type="text"
+          placeholder="Height.."
+          onChange={handleChange}
+          required
+        />
+        <label>Weight:</label>
+        <input
+          type="text"
+          placeholder="Weight.."
+          onChange={handleChange}
+          required
+        />
+        <button className="user-button" type="submit">Submit</button>
+      </form>
+      </div>  
+    </div>
   );
 };
 

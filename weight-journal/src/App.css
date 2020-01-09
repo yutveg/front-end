@@ -113,4 +113,40 @@ button{
   cursor: pointer;
 }
 
+.user-container{
+  background-color: #F2F3F4;
+  width: 100%;
+  max-width: 50%;
+  margin-left: 25%;
+  padding: 1%;
+}
 
+.user-form-container{
+  display: flex;
+}
+
+.user-button{
+  width: 20%;
+}
+
+
+
+.user-form input{
+  width: 55%;
+  margin-right: 10%;
+  margin-bottom: 2%;
+  margin-left: 2%;
+}
+
+.adduser-container{
+  width: 10%;
+  background-color: #ff6347;
+  margin-left: 45%;
+  margin-bottom: 1%;
+  border: 1px solid black;
+}
+
+.adduser-container a{
+  text-decoration: none;
+  color: white;
+}
