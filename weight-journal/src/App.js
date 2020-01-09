@@ -11,28 +11,24 @@ import PrivateRoute from "./components/PrivateRoute";
 import UpdateWorkout from "./components/UpdateWorkout";
 
 function App() {
-  const [userID, setUserid] = useState('')
+  const [userid, setUserid] = useState('')
   const [workouts, setWorkouts] = useState([])
-  const userid = localStorage.getItem('userid')
 
 
   useEffect(() => {
-    if(localStorage.getItem('token')){
-      axiosWithAuth()
-      
+    axiosWithAuth()
       .get(`/users/${userid}/journal`)
       .then(res => {
-        console.log(res.data)
-        setWorkouts(res.data); 
-        console.log(userid)
+          console.log(res.data)
+          setWorkouts(res.data) 
+          console.log(userid)
       })
       .catch(err => console.log(err));
-      console.log(workouts)
-    } else return
   }, [userid]);
 
   const signOut = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('userid')
         setUserid(0)
   }
 
@@ -43,11 +39,11 @@ function App() {
           <span className="fas fa-dumbbell"></span>
         </div>
         <div className="nav-links">
-          <Link to="/signin/">Sign In</Link> 
-          <Link to="/signup/">Sign Up</Link>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/addworkout/">Add Workout</Link>
-          <Link to="/signin/" onClick={signOut}>Sign Out</Link>
+          {!localStorage.getItem('token') && <Link to="/signin/">Sign In</Link>}
+          {!localStorage.getItem('token') && <Link to="/signup/">Sign Up</Link>}
+          {localStorage.getItem('token') && <Link to="/dashboard">Dashboard</Link>}
+          {localStorage.getItem('token') && <Link to="/addworkout/">Add Workout</Link>}
+          {localStorage.getItem('token') && <Link to="/signin/" onClick={signOut}>Sign Out</Link>}
         </div>
       </nav>
         <Route path="/addworkout/" component={props => <AddWorkout userid={userid} setUserid={setUserid} setWorkouts={setWorkouts} {...props} />} />
