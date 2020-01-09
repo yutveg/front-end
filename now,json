@@ -1,0 +1,8 @@
+{
+    "version": 2,
+    "name": "weight-journal",
+    "builds": [{ "src": ""weight-journal/package.json", "use": "@now/static-build", "config": {"distDir": "build"} }],
+    "routes": [
+        { "src": "/(.*)", "dest": ""weight-journal/$1" }
+    ]
+}
