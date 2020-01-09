@@ -3,16 +3,16 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 
 function Dashboard(props) {
-  const [workout, setWorkout] = useState([]);
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`/users/${props.userid}/journal`)
+      .get(`/users/${props.userid}/info`)
       .then(res => {
-        console.log(res.data);
-        setWorkout(res.data);
+        console.log("this is the users data", res.data)
+        setUserData(res.data)
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   }, []);
 
   const handleDelete = e => {
@@ -37,9 +37,15 @@ function Dashboard(props) {
   };
   return (
     <div>
-      <div className="adduser-container">
-        <Link to={`/addinfo`}>Add Body Info</Link>
-      </div>
+      <Link to={`/addinfo`}>Add Body Weight Entry</Link>
+      <h1>Body Weight Entries</h1>
+      {userData.map(entry => (
+        <div key={entry.id}>
+          <h1>{entry.created_at.slice(0, 10)}</h1>
+          <h2>{entry.user_weight}</h2>
+        </div>
+      ))}
+      <h1>Exercise Entries</h1>
       {props.workouts.map(exercise => (
         // <Workout workouts={workouts} />
         <div className="workout-container" key={exercise.id}>
@@ -51,10 +57,11 @@ function Dashboard(props) {
               <p><span>Reps: </span>{exercise.reps}</p>
               <p><span>Sets: </span>{exercise.sets}</p>
               <p><span>Notes: </span>{exercise.notes}</p>
+              <p>{exercise.created_at.slice(0, 10)}</p>
             </div>
             <div className="button-container">
-              <button class="far fa-edit" id={exercise.id} onClick={handleEdit}/>
-              <button class="fas fa-trash-alt" id={exercise.id} onClick={handleDelete}/>
+              <button className="far fa-edit" id={exercise.id} onClick={handleEdit}/>
+              <button className="fas fa-trash-alt" id={exercise.id} onClick={handleDelete}/>
             </div>
           </div>
         </div>

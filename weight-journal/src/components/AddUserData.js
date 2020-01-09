@@ -11,12 +11,12 @@ const AddUserData = props => {
   const handleChange = e => {
     let value = e.target.value
     if(e.target.name === 'age'){
-      e.target.value = parseInt(e.target.value, 10)
+      value = parseInt(value, 10)
     }
 
     setUserInfo({
       ...userInfo,
-      [e.target.name]: e.target.value
+      [e.target.name]: value
     });
   };
 
