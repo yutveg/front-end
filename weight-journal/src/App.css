@@ -129,8 +129,6 @@ button{
   width: 20%;
 }
 
-
-
 .user-form input{
   width: 55%;
   margin-right: 10%;
@@ -139,9 +137,9 @@ button{
 }
 
 .adduser-container{
-  width: 10%;
+  width: 13%;
   background-color: #ff6347;
-  margin-left: 45%;
+  margin-left: 43%;
   margin-bottom: 1%;
   border: 1px solid black;
 }
@@ -149,4 +147,18 @@ button{
 .adduser-container a{
   text-decoration: none;
   color: white;
+}
+
+.body-weight-entry h1{
+  background-color: #F2F3F4;
+  width: 20%;
+  border: 1px solid black;
+  margin-left: 40%;
+}
+
+.exercise-entry h1{
+  background-color: #F2F3F4;
+  width: 17%;
+  border: 1px solid black;
+  margin-left: 42%;
 }

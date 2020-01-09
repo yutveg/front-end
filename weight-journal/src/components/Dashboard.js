@@ -37,15 +37,21 @@ function Dashboard(props) {
   };
   return (
     <div>
-      <Link to={`/addinfo`}>Add Body Weight Entry</Link>
-      <h1>Body Weight Entries</h1>
+      <div className="adduser-container">
+        <Link to={`/addinfo`}>Add Body Weight Entry</Link>
+      </div>
+      <div className="body-weight-entry">
+        <h1>Body Weight Entries</h1>
       {userData.map(entry => (
         <div key={entry.id}>
           <h1>{entry.created_at.slice(0, 10)}</h1>
           <h2>{entry.user_weight}</h2>
         </div>
       ))}
-      <h1>Exercise Entries</h1>
+      </div>
+      <div className="exercise-entry">
+        <h1>Exercise Entries</h1>
+      </div>
       {props.workouts.map(exercise => (
         // <Workout workouts={workouts} />
         <div className="workout-container" key={exercise.id}>
