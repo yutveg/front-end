@@ -21,9 +21,9 @@ const [info, setInfo] = useState({
       .post("https://weightliftingjournal1.herokuapp.com/api/auth/login", info)
       .then(response => {
         console.log("success", response);
-        props.setUserid(response.data.id)
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('userid', response.data.id)
+        props.setUserid(response.data.id)
         props.history.push('/dashboard')
       })
       .catch(error => console.log(error.response));
