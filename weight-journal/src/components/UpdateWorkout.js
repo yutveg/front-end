@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 import './UpdateWorkout.css'
 
@@ -39,11 +39,15 @@ const UpdateWorkout = (props) => {
     }
 
     const handleSubmit = e => {
+        console.log(workout)
+        console.log(workout.id)
         e.preventDefault()
-        axios
+        axiosWithAuth()
             .put(`/users/${workout.id}/entry`, workout)
             .then(response => {
+                console.log("this is the response", response.data)
                 props.updateWorkout(response.data);
+                props.setUserid(props.userid)
                 props.history.push(`/dashboard`)
             })
             .catch(error => console.log('Data not returned(handleSubmit) UpdateWorkout.js', error))

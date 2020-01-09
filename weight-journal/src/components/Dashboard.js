@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { Link, useHistory, Route } from "react-router-dom";
-import UpdateWorkout from './UpdateWorkout'
+import { Link } from "react-router-dom";
 
 function Dashboard(props) {
   const [workouts, setWorkouts] = useState([]);
@@ -16,7 +15,8 @@ function Dashboard(props) {
       .get(`users/${props.userid}/journal`)
       .then(res => {
         console.log(res.data);
-        props.setWorkout(res.data);
+        props.setWorkouts(res.data);
+        props.setUserid(props.userid)
       })
       .catch(err => console.log(err));
   };
@@ -27,7 +27,7 @@ function Dashboard(props) {
   };
   return (
     <div>
-      <Link to={`/userinfo/${props.userid}`}>Add User Info</Link>
+      <Link to={`/addinfo`}>Add User Info</Link>
       {props.workouts.map(exercise => (
         // <Workout workouts={workouts} />
         <div className="workout-container" key={exercise.id}>
@@ -37,6 +37,7 @@ function Dashboard(props) {
               <p><span>Target Muscles: </span>{exercise.body_region}</p>
               <p><span>Weight: </span>{exercise.weight}</p>
               <p><span>Reps: </span>{exercise.reps}</p>
+              <p><span>Sets: </span>{exercise.sets}</p>
               <p><span>Notes: </span>{exercise.notes}</p>
             </div>
             <div className="button-container">
