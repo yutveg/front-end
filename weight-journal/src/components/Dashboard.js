@@ -3,7 +3,17 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 
 function Dashboard(props) {
-  const [workouts, setWorkouts] = useState([]);
+  const [workout, setWorkout] = useState([]);
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`/users/${props.userid}/journal`)
+      .then(res => {
+        console.log(res.data);
+        setWorkout(res.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   const handleDelete = e => {
     console.log(e.target.id);
@@ -30,7 +40,7 @@ function Dashboard(props) {
       <Link to={`/addinfo`}>Add User Info</Link>
       {props.workouts.map(exercise => (
         // <Workout workouts={workouts} />
-        <div className="workout-container" key={exercise.id}>
+        <div className="workout-container" key={workouts.id}>
           <div className="workout-card">
             <div className="workout-items">
               <p><span>Exercise: </span>{exercise.workout}</p>
@@ -41,12 +51,8 @@ function Dashboard(props) {
               <p><span>Notes: </span>{exercise.notes}</p>
             </div>
             <div className="button-container">
-              <button className="workout-button" id={exercise.id} onClick={handleDelete}>
-                Delete
-              </button>
-              <button className="workout-button" id={exercise.id} onClick={handleEdit}>
-                Edit
-              </button>
+              <button class="far fa-edit" id={workouts.id} onClick={handleEdit}/>
+              <button class="fas fa-trash-alt" id={workouts.id} onClick={handleDelete}/>
             </div>
           </div>
         </div>

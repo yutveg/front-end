@@ -55,53 +55,55 @@ const UpdateWorkout = (props) => {
     }
 
     return (
-        <div>
-            <h1>UpdateWorkout.js</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="update-container">
+            <h1>Edit Workout</h1>
+            <div className="update-form-container">
+            <form className="update-form" onSubmit={handleSubmit}>
                 <input 
-                    placeholder='workout' 
+                    placeholder='Workout' 
                     type='text' 
                     name='workout' 
                     value={workout.workout}
                     onChange={handleChanges}
                 />
                 <input 
-                    placeholder='body region' 
+                    placeholder='Body Region' 
                     type='text' 
                     name='body_region' 
                     value={workout.body_region}
                     onChange={handleChanges}
                 />
                 <input 
-                    placeholder='sets' 
+                    placeholder='Sets' 
                     type='number' 
                     name='sets' 
                     value={workout.sets}
                     onChange={handleChanges}
                 />
                 <input 
-                    placeholder='weight' 
+                    placeholder='Weight' 
                     type='text' 
                     name='weight' 
                     value={workout.weight}
                     onChange={handleChanges}
                 />
                 <input 
-                    placeholder='reps' 
+                    placeholder='Reps' 
                     type='number' 
                     name='reps' 
                     value={workout.reps}
                     onChange={handleChanges}
                 />
                 <input 
-                    placeholder='notes' 
+                    placeholder='Notes' 
                     type='text' 
                     name='notes' 
                     value={workout.notes}
                     onChange={handleChanges}
                 />
-                <button>Edit Workout</button>
+                <button className="edit-button">Submit</button>
             </form>
+            </div>
         </div>
     )
 }

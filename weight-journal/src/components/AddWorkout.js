@@ -55,9 +55,10 @@ const AddWorkout = (props) => {
 	};
 
 	return (
-		<div>
-			<form className="addworkout-container" onSubmit={handleSubmit}>
-			<h1>Add Exercises</h1>
+		<div className="add-container">
+			<h1>Add Exercise</h1>
+			<div className="add-form-container">
+			<form className="add-form" onSubmit={handleSubmit}>
 				<input
 					className="workout-input"
 					placeholder="Workout Name"
@@ -106,8 +107,9 @@ const AddWorkout = (props) => {
 					value={workout.notes}
 					onChange={handleChanges}
 				/>
-				<button className="add-button">Add Workout</button>
+				<button className="add-button">Submit</button>
 			</form>
+			</div>
 		</div>
 	);
 };

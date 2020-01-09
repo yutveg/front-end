@@ -45,42 +45,18 @@ nav {
   padding: 1%;
 }
 
-/* .workout-card{
-  display: flex;
-  border: 1px solid black;
-  width: 25%;
-  margin-left: 38%;
-  margin-bottom: 2%;
-  background-color: #F2F3F4;
-}
-
-.workout-items{
-  font-size: 1.2rem;
-} */
-
 .workout-container {
-  background-color: #f2f3f4;
-  border: 1px solid black;
   width: 100%;
 }
 
-/* .workout-container h2 {
-  text-align: center;
-}
-
-.workout-container h4 {
-  font-weight: normal;
-  margin-left: 1%;
-  margin-bottom: 0;
-} */
-
 .workout-card {
-  background-color: lightgrey;
+  border: 1px solid black;
+  background-color: #F2F3F4;
   display: flex;
   justify-content: space-between;
   padding: 1%;
   height: 5vh;
-  /* margin-bottom: 1%; */
+  margin-bottom: 1%;
 }
 
 .workout-items {
@@ -90,19 +66,20 @@ nav {
   max-width: 50%;
 }
 
-.workout-button {
-  font-weight: bold;
-  color: #ff6347;
-  border: none;
-  background: none;
-  margin: 2%;
-}
-
 .button-container {
   display: flex;
+  width: 100%;
+  max-width: 8%;
 }
 
-p span {
+.button-container button{
+  color: black;
+  border: none;
+  background: none;
+  margin: 2% 10% 0 2%;
+}
+
+span {
   font-weight: bold;
 }
 
@@ -125,13 +102,6 @@ label {
   font-size: 1.5rem;
 }
 
-
-.checkbox-container{
-  display: flex;
-  flex-direction: row-reverse;
-  margin-left: 10%;
-}
-
 button{
   color: white;
   font-weight: bold;
@@ -140,10 +110,7 @@ button{
   padding: 2%;
   margin: 5%;
   width: 65%;
-  /* background-color: #EBF5FB; */
-  /* background-color: #D6EAF8; */
-  /* background-color: #008CBA; */
-  /* box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.12), 0 2px 3px 2px rgba(0, 0, 0, 0.24); */
+  cursor: pointer;
 }
 
 
