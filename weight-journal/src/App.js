@@ -94,7 +94,7 @@ function App() {
       />
       <Route
         path="/addinfo"
-        render={props => <AddUserData {...props} userid={userid} />}
+        render={props => <AddUserData {...props} userid={userid} setUserid={setUserid} />}
       />
       <Route
         path="/signin/"

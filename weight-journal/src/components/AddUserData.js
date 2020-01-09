@@ -25,9 +25,15 @@ const AddUserData = props => {
     e.preventDefault();
     console.log(userInfo)
     console.log(props.userid)
+    let tempID = props.userId
     axiosWithAuth()
       .post(`/users/${props.userid}/info`, userInfo)
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res)
+        props.setUserid(0)
+        props.setUserid(tempID)
+        props.history.push('/dashboard')
+      })
       .catch(err => console.log(err));
   };
 
