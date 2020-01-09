@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
 
@@ -37,10 +37,12 @@ function Dashboard(props) {
   };
   return (
     <div>
-      <Link to={`/addinfo`}>Add User Info</Link>
+      <div className="adduser-container">
+        <Link to={`/addinfo`}>Add Body Info</Link>
+      </div>
       {props.workouts.map(exercise => (
         // <Workout workouts={workouts} />
-        <div className="workout-container" key={workouts.id}>
+        <div className="workout-container" key={exercise.id}>
           <div className="workout-card">
             <div className="workout-items">
               <p><span>Exercise: </span>{exercise.workout}</p>
@@ -51,8 +53,8 @@ function Dashboard(props) {
               <p><span>Notes: </span>{exercise.notes}</p>
             </div>
             <div className="button-container">
-              <button class="far fa-edit" id={workouts.id} onClick={handleEdit}/>
-              <button class="fas fa-trash-alt" id={workouts.id} onClick={handleDelete}/>
+              <button class="far fa-edit" id={exercise.id} onClick={handleEdit}/>
+              <button class="fas fa-trash-alt" id={exercise.id} onClick={handleDelete}/>
             </div>
           </div>
         </div>
