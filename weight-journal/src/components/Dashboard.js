@@ -41,8 +41,8 @@ function Dashboard(props) {
       <h1>Body Weight Entries</h1>
       {userData.map(entry => (
         <div key={entry.id}>
-          <h1>{entry.user_weight}</h1>
-          <h2>Date goes here</h2>
+          <h1>{entry.created_at.slice(0, 10)}</h1>
+          <h2>{entry.user_weight}</h2>
         </div>
       ))}
       <h1>Exercise Entries</h1>

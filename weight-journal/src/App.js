@@ -15,7 +15,8 @@ function App() {
   const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
-    setUserid(localStorage.getItem("userid"));
+    if(localStorage.getItem('token')){
+      setUserid(localStorage.getItem("userid"));
     axiosWithAuth()
       .get(`/users/${userid}/journal`)
       .then(res => {
@@ -23,6 +24,7 @@ function App() {
         setWorkouts(res.data);
       })
       .catch(err => console.log(err));
+    }
   }, [userid]);
 
   const signOut = () => {

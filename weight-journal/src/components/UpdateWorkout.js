@@ -39,9 +39,9 @@ const UpdateWorkout = (props) => {
     }
 
     const handleSubmit = e => {
+        e.preventDefault()
         console.log(workout)
         console.log(workout.id)
-        e.preventDefault()
         let tempID = props.userid
         axiosWithAuth()
             .put(`/users/${workout.id}/entry`, workout)
