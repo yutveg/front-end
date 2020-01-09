@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Dashboard(props) {
   const [workout, setWorkout] = useState([]);
@@ -25,7 +25,8 @@ function Dashboard(props) {
       .get(`users/${props.userid}/journal`)
       .then(res => {
         console.log(res.data);
-        setWorkout(res.data);
+        props.setWorkouts(res.data);
+        props.setUserid(props.userid)
       })
       .catch(err => console.log(err));
   };
@@ -36,18 +37,18 @@ function Dashboard(props) {
   };
   return (
     <div>
-      <Link to={`/userinfo/${props.userid}`}>Add User Info</Link>
-      {workout.map(workouts => (
+      <Link to={`/addinfo`}>Add User Info</Link>
+      {props.workouts.map(exercise => (
         // <Workout workouts={workouts} />
         <div className="workout-container" key={workouts.id}>
           <div className="workout-card">
             <div className="workout-items">
-              <p><span>Exercise:  </span>{workouts.workout}</p>
-              <p><span>Target Muscles: </span> {workouts.body_region}</p>
-              <p><span>Weight: </span>{workouts.weight}</p>
-              <p><span>Reps: </span>{workouts.reps}</p>
-              <p><span>Sets: </span>{workouts.sets}</p>
-              <p>Notes: {workouts.notes}</p>
+              <p><span>Exercise: </span>{exercise.workout}</p>
+              <p><span>Target Muscles: </span>{exercise.body_region}</p>
+              <p><span>Weight: </span>{exercise.weight}</p>
+              <p><span>Reps: </span>{exercise.reps}</p>
+              <p><span>Sets: </span>{exercise.sets}</p>
+              <p><span>Notes: </span>{exercise.notes}</p>
             </div>
             <div className="button-container">
               <button class="far fa-edit" id={workouts.id} onClick={handleEdit}/>

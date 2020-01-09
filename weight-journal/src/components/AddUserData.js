@@ -8,9 +8,12 @@ const AddUserData = props => {
     weight: ""
   });
 
-  const userID = props.match.params.id;
-
   const handleChange = e => {
+    let value = e.target.value
+    if(e.target.name === 'age'){
+      e.target.value = parseInt(e.target.value, 10)
+    }
+
     setUserInfo({
       ...userInfo,
       [e.target.name]: e.target.value
@@ -19,14 +22,15 @@ const AddUserData = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axiosWithAuth
-      .post(`/users/${userID}/info`, userInfo)
+    console.log(userInfo)
+    axiosWithAuth()
+      .post(`/users/${props.userid}/info`, userInfo)
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>Age:</label>
       <input
         type="number"
@@ -48,6 +52,7 @@ const AddUserData = props => {
         onChange={handleChange}
         required
       />
+      <button type="submit">Submit</button>
     </form>
   );
 };

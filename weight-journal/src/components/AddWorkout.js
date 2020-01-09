@@ -14,11 +14,9 @@ const AddWorkout = (props) => {
 
 	const handleChanges = (e) => {
 		let value = e.target.value;
-        if(e.target.name === 'sets' || e.target.name === 'reps' ){
+        if(e.target.name === 'sets' || e.target.name === 'reps' || e.target.name === 'weight'){
 				value = parseInt(value, 10)
 			}
-		
-
 		setWorkout({
 			...workout,
 			[e.target.name]: value
@@ -34,12 +32,20 @@ const AddWorkout = (props) => {
             .then(response => {
 				console.log(response)
 				props.history.push('/dashboard');
+				axiosWithAuth().get(`/users/${props.userid}/journal`).then(res => {
+					console.log(res)
+					props.setWorkouts(res.data)
+				}).catch(err => console.log(err))
             })
-            .catch(error => console.log("Data not returned AddWorkout.js", error))
+            .catch(error => {
+				console.log("Data not returned AddWorkout.js", error)
+				props.history.push('/dashboard')
+			})
+			props.setUserid(props.userid)
 
 		setWorkout({
 			...workout,
-			username: '',
+			workout: '',
     		body_region: '',
     		sets: '',
     		weight: '',
@@ -81,7 +87,7 @@ const AddWorkout = (props) => {
 					className="workout-input"
 					placeholder="Weight"
 					name="weight"
-					type="text"
+					type="number"
 					value={workout.weight}
 					onChange={handleChanges}
 				/>
