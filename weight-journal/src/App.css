@@ -42,7 +42,7 @@ nav {
 .header{
   display: flex;
   font-size: 4rem;
-  padding: 1%;
+  padding: 0.5%;
 }
 
 .workout-container {
@@ -54,16 +54,17 @@ nav {
   background-color: #F2F3F4;
   display: flex;
   justify-content: space-between;
-  padding: 1%;
-  height: 5vh;
-  margin-bottom: 1%;
+  align-items: center;
+  padding: 0.5% 0;
+  height: 3vh;
+  margin-bottom: 0.5%;
 }
 
 .workout-items {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  justify-content: start;
   width: 100%;
-  max-width: 50%;
 }
 
 .button-container {
@@ -81,6 +82,33 @@ nav {
 
 span {
   font-weight: bold;
+}
+
+.body-container{
+  width: 100%;
+}
+
+.body-card {
+  border: 1px solid black;
+  background-color: #F2F3F4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5%;
+  height: 3vh;
+  margin-bottom: 0.5%;
+}
+
+.body-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  justify-content: center;
+  width: 100%;
+  max-width: 53%;
+}
+
+.body-container label{
+  display: none;
 }
 
 .form-container {
@@ -139,8 +167,7 @@ button{
 .adduser-container{
   width: 13%;
   background-color: #ff6347;
-  margin-left: 43%;
-  margin-bottom: 1%;
+  margin: 1% auto;
   border: 1px solid black;
 }
 
@@ -153,12 +180,12 @@ button{
   background-color: #F2F3F4;
   width: 20%;
   border: 1px solid black;
-  margin-left: 40%;
+  margin: 1% auto;
 }
 
 .exercise-entry h1{
   background-color: #F2F3F4;
   width: 17%;
   border: 1px solid black;
-  margin-left: 42%;
+  margin: 1% auto;
 }
