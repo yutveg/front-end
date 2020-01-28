@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Route, Link } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+import Dashboard from "./components/private/Dashboard";
+import SignIn from "./components/public/SignIn";
+import SignUp from "./components/public/SignUp";
 import { axiosWithAuth } from "./utils/axiosWithAuth";
-import AddWorkout from "./components/AddWorkout";
-import AddUserData from "./components/AddUserData";
+import AddWorkout from "./components/private/AddWorkout";
+import AddUserData from "./components/private/AddUserData";
 import PrivateRoute from "./components/PrivateRoute";
-import UpdateWorkout from "./components/UpdateWorkout";
-import UpdateUserData from "./components/UpdateUserData";
+import UpdateWorkout from "./components/private/UpdateWorkout";
+import UpdateUserData from "./components/private/UpdateUserData";
 
 function App() {
   const [userid, setUserid] = useState(0);
