@@ -36,3 +36,4 @@ We deployed this app on Netlify. Our backend was deployed on heroku.
 
 * **Sergio Perez** - [perezsergioace](https://github.com/perezsergioace)
 
+* **Adam Monast** - [Adammonast](https://github.com/Adammonast)
