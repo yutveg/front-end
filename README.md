@@ -14,13 +14,13 @@ You will need some form of bash terminal to pull down the project through Git as
 
 A step by step series of examples that tell you how to get a development env running
 
-## Step 1.) Clone this repo
+# Step 1.) Clone this repo
 
-## Step 2.) CD into weight-journal in a terminal of your choice
+# Step 2.) CD into weight-journal in a terminal of your choice
 
-## Step 3.) Install all the packages with ```yarn install``` || ```npm install```
+# Step 3.) Install all the packages with ```yarn install``` || ```npm install```
 
-## Step 4.) Open the project by running it in development mode with ```yarn start``` || ```npm start```
+# Step 4.) Open the project by running it in development mode with ```yarn start``` || ```npm start```
 
 ## Deployment
 
