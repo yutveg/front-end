@@ -1,4 +1,4 @@
-# Project Title
+# Weight Lifting Journal
 
 A journal for athletes to keep track of their exercises and body weight data overtime. 
 
