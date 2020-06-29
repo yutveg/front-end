@@ -17,13 +17,11 @@ const [info, setInfo] = useState({
   const handleSubmit = e => {
     e.preventDefault();
     console.log("submitting", info);
-    axiosWithAuth()
+    axios
       .post("https://weightliftingjournal1.herokuapp.com/api/auth/login", info)
       .then(response => {
         console.log("success", response);
         localStorage.setItem('token', response.data.token)
-        localStorage.setItem('userid', response.data.id)
-        props.setUserid(response.data.id)
         props.history.push('/dashboard')
       })
       .catch(error => console.log(error.response));
