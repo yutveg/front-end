@@ -16,11 +16,9 @@ const [info, setInfo] = useState({
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("submitting", info);
     axios
       .post("https://weightliftingjournal1.herokuapp.com/api/auth/login", info)
       .then(response => {
-        console.log("success", response);
         localStorage.setItem('token', response.data.token)
         props.history.push('/dashboard')
       })
