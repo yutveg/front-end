@@ -35,10 +35,6 @@ nav {
   margin-right: 20px;
 }
 
-/* .nav-links a:hover {
-  text-shadow: 0 0 3px gray;
-} */
-
 .header{
   display: flex;
   font-size: 4rem;

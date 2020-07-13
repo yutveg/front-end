@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 const initialData = {
   user_age: "",
   user_height: "",
-  user_weight: ""
+  user_weight: "",
 };
 
-const UpdateUserData = props => {
+const UpdateUserData = (props) => {
   const [userData, setUserData] = useState(initialData);
 
   useEffect(() => {
     console.log("this is props.userData", props.userData);
     const dataToEdit = props.userData.find(
-      e => `${e.id}` === props.match.params.id
+      (e) => `${e.id}` === props.match.params.id
     );
     if (dataToEdit) {
       setUserData(dataToEdit);
     }
   }, [props.userData, props.match.params.id]);
 
-  const handleChanges = e => {
+  const handleChanges = (e) => {
     e.persist();
     let value = e.target.value;
     if (e.target.name === "age") {
@@ -28,11 +28,11 @@ const UpdateUserData = props => {
     }
     setUserData({
       ...userData,
-      [e.target.name]: value
+      [e.target.name]: value,
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("this is what we sent to the put", userData);
     console.log(userData.id);
@@ -41,14 +41,14 @@ const UpdateUserData = props => {
       .put(`/users/${userData.id}/info`, {
         user_age: userData.user_age,
         user_height: userData.user_height,
-        user_weight: userData.user_weight
+        user_weight: userData.user_weight,
       })
-      .then(response => {
+      .then((response) => {
         console.log("this is the response", response.data);
         props.setUserid(tempID);
         props.history.push(`/dashboard`);
       })
-      .catch(error =>
+      .catch((error) =>
         console.log("Data not returned(handleSubmit) UpdateWorkout.js", error)
       );
   };
