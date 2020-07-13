@@ -1,0 +1,19 @@
+.user-container {
+  background-color: #f2f3f4;
+  width: 100%;
+  max-width: 50%;
+  margin-left: 25%;
+  padding: 1%;
+}
+
+.user-form-container {
+  display: flex;
+}
+
+.user-button {
+  width: 20%;
+}
+
+.user-form input {
+  width: 55%;
+}

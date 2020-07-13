@@ -1,24 +1,24 @@
-.add-container{
-    background-color: #F2F3F4;
-    width: 100%;
-    max-width: 70%;
-    margin-left: 15%;
-    padding: 1%;
+.add-container {
+  background-color: #f2f3f4;
+  width: 50%;
+  margin: 0 auto;
+  padding: 15px;
 }
 
-.add-form-container{
-    display: flex;
-    justify-content: space-around;
+.add-form-container {
+  display: flex;
+  justify-content: space-around;
 }
 
-.add-button{
-    text-align: center;
-    padding: 1%;
-    width: 15%;
+.add-button {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 10px 0;
+  width: 12%;
 }
 
-.add-form input{
-    margin: 1%;
-    width: 30%;
-    height: 3vh;
+.add-form input {
+  margin: 1%;
+  width: 30%;
+  height: 30px;
 }

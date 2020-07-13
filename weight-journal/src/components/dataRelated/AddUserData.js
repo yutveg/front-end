@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-
+import "./AddUserData.css";
 const AddUserData = (props) => {
   const [userInfo, setUserInfo] = useState({
     user_age: "",

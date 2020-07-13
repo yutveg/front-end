@@ -1,12 +1,16 @@
 .App {
   text-align: center;
-  font-family: 'Oswald', sans-serif;
-  font-size: 1rem;
+  font-family: "Oswald", sans-serif;
+  font-size: 62.5%;
 }
 
 body {
   height: 100vh;
-  background-image: linear-gradient(rgba(43, 42, 42, 0.5), rgba(43, 42, 42, 0.5)), url("https://images.unsplash.com/photo-1517964603305-11c0f6f66012?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2551&q=80");
+  background-image: linear-gradient(
+      rgba(43, 42, 42, 0.5),
+      rgba(43, 42, 42, 0.5)
+    ),
+    url("https://images.unsplash.com/photo-1517964603305-11c0f6f66012?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2551&q=80");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,7 +24,7 @@ nav {
   padding: 0 1%;
   margin-bottom: 2%;
   border-bottom: 1px solid black;
-  background-color: #F2F3F4
+  background-color: #f2f3f4;
 }
 
 .nav-links {
@@ -35,10 +39,24 @@ nav {
   margin-right: 20px;
 }
 
-.header{
+.header {
   display: flex;
   font-size: 4rem;
   padding: 0.5%;
+}
+
+.adduser-container {
+  font-size: 1.23rem;
+  width: 15%;
+  background-color: #ff6347;
+  padding: 10px;
+  margin: 20px auto;
+  border: 1px solid black;
+}
+
+.adduser-container a {
+  text-decoration: none;
+  color: white;
 }
 
 .workout-container {
@@ -47,7 +65,7 @@ nav {
 
 .workout-card {
   border: 1px solid black;
-  background-color: #F2F3F4;
+  background-color: #f2f3f4;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,7 +87,7 @@ nav {
   max-width: 8%;
 }
 
-.button-container button{
+.button-container button {
   color: black;
   border: none;
   background: none;
@@ -80,13 +98,13 @@ span {
   font-weight: bold;
 }
 
-.body-container{
+.body-container {
   width: 100%;
 }
 
 .body-card {
   border: 1px solid black;
-  background-color: #F2F3F4;
+  background-color: #f2f3f4;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -103,21 +121,27 @@ span {
   max-width: 53%;
 }
 
-.body-container label{
+.body-container label {
   display: none;
 }
 
 .form-container {
   border: 1px solid black;
-  width: 100%;
-  max-width: 30%;
-  margin: 2% 0 0 35%;
-  background-color: #F2F3F4;
-} 
+  padding: 10px 0;
+  width: 22%;
+  margin: 0 auto;
+  background-color: #f2f3f4;
+}
 
-.form-container, .forms{
-  display:flex;
+.form-container,
+.forms {
+  display: flex;
   flex-direction: column;
+}
+
+.form-container button {
+  width: 20%;
+  padding: 10px 0;
 }
 
 label {
@@ -126,62 +150,19 @@ label {
   font-size: 1.5rem;
 }
 
-button{
+button {
   color: white;
   font-weight: bold;
   background-color: #ff6347;
   font-size: 1rem;
   padding: 2%;
-  margin: 5%;
+  margin: 15px;
   width: 65%;
   cursor: pointer;
 }
 
-.user-container{
-  background-color: #F2F3F4;
-  width: 100%;
-  max-width: 50%;
-  margin-left: 25%;
-  padding: 1%;
-}
-
-.user-form-container{
-  display: flex;
-}
-
-.user-button{
+h1 {
+  background-color: #f2f3f4;
   width: 20%;
-}
-
-.user-form input{
-  width: 55%;
-  margin-right: 10%;
-  margin-bottom: 2%;
-  margin-left: 2%;
-}
-
-.adduser-container{
-  width: 13%;
-  background-color: #ff6347;
-  margin: 1% auto;
-  border: 1px solid black;
-}
-
-.adduser-container a{
-  text-decoration: none;
-  color: white;
-}
-
-.body-weight-entry h1{
-  background-color: #F2F3F4;
-  width: 20%;
-  border: 1px solid black;
-  margin: 1% auto;
-}
-
-.exercise-entry h1{
-  background-color: #F2F3F4;
-  width: 17%;
-  border: 1px solid black;
   margin: 1% auto;
 }
