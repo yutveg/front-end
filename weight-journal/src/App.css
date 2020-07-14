@@ -155,6 +155,7 @@ button {
   font-weight: bold;
   background-color: #ff6347;
   font-size: 1rem;
+  letter-spacing: 1px;
   padding: 2%;
   margin: 15px;
   width: 65%;
